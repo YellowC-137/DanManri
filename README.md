@@ -8,3 +8,4 @@
 3. 앱 제작
 - 참조 유튜브, 구글 링크
 https://www.youtube.com/playlist?list=PLY0IkcTk5XcYyS8SwJQ8-KoXduyk1xTzE -> 채팅어플 제작
+https://www.youtube.com/watch?v=ORI4-EXhgC4 -> 모바일 앱 제작 팁?
