@@ -76,6 +76,7 @@ ex) 한달 지속했으면 Lv1 -> Lv2로 올라가며 할당량을 재설정 할
 + 서버
 + DB
 4. 앱 제작
+구글 스토어 어플 Habitica
 - 참조 유튜브, 구글 링크
 https://www.youtube.com/playlist?list=PLY0IkcTk5XcYyS8SwJQ8-KoXduyk1xTzE -> 채팅어플 제작
 https://www.youtube.com/watch?v=ORI4-EXhgC4 -> 모바일 앱 제작 팁?
