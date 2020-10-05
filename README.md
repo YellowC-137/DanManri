@@ -22,6 +22,9 @@ https://developer.android.com/docs?hl=ko
 임시로 FifeBase console 연결한것
 https://console.firebase.google.com/project/lostnfound-3024f/overview
 
+구글맵 API 연결, 지도에 마커 표시
+https://mailmail.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/9.%20%EA%B5%AC%EA%B8%80%EB%A7%B5%20API
+
 구글맵은 일단 내 계정으로 만들기는 했으나 (체험판)
 문서를 좀더 찾아보고 제대로 연결해야 할듯
 
