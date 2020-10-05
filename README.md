@@ -32,5 +32,4 @@ https://mailmail.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93
 
 10.05
 로그인시 id,pw 경우 설정 해야함
-fragments -> map,setting 오류
 슬라이드뷰가 아닌 버튼으로 lost,found 설정?
