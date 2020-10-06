@@ -49,7 +49,8 @@ Warning:(24, 17) 'androidx.lifecycle.ViewModelProviders' is deprecated
 10/06
 Fragment - Home(게시판),notify(알림?-추후 수정예정),map,setting fragment
 스크롤기능 X : 없어도 되는지 모르겠음, 추후에 추가
-
+HomeActivity crash
+게시판 글쓰기 까지 구현, 게시판 글모음 보기 X
 
 ===============전문가 자문 관련=================
 안녕하세요?
