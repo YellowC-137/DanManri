@@ -30,6 +30,10 @@ https://mailmail.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93
 
 로그인 인증 - 마이크로소프트 학교계정 , 전화인증(?), 학생증 
 
+비밀번호/ 찾기?
+ID는 학번@dankook.ac.kr 고정?
+
+
 10.05
 로그인시 id,pw 경우 설정 해야함
 슬라이드뷰가 아닌 버튼으로 lost,found 설정?
