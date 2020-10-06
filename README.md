@@ -3,9 +3,9 @@
 단국대 분실물 어플
 
 10/7 일전까지
--Firebase 연동
+-Firebase 연동 O
 -Google Map API 연동
--게시판 + 전체 UI 만들기
+-게시판 + 전체 UI 만들기 O
 -분실과 습득 게시판 매칭 기능 구현과정 생각
 
 유튜브 안드로이드 스튜디오
@@ -32,6 +32,8 @@ https://mailmail.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93
 
 비밀번호/ 찾기?
 ID는 학번@dankook.ac.kr 고정?
+
+Fragment가 아닌 그냥 Activity로 구현하기?
 
 
 10.05
