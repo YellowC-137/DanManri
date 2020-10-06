@@ -39,6 +39,7 @@ Fragment가 아닌 그냥 Activity로 구현하기?
 10.05
 로그인시 id,pw 경우 설정 해야함
 슬라이드뷰가 아닌 버튼으로 lost,found 설정?
+progressbar 설정 - 전역
 
 Warning:(23, 9) Hardcoded string "Notify page", should use `@string` resource
 Warning:(31, 18) Casting 'findViewById(...)' to 'EditText' is redundant
