@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">440752960999-ljg9vh4d6bf2jfibsus4npd7evibi6n3.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://lostnfound-3024f.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">440752960999</string>
+    <string name="google_api_key" translatable="false">AIzaSyD1kceY2m4MC-Bp-zZKVcQkZN8yXnFp1hI</string>
+    <string name="google_app_id" translatable="false">1:440752960999:android:00e130d62337d954017942</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD1kceY2m4MC-Bp-zZKVcQkZN8yXnFp1hI</string>
+    <string name="google_storage_bucket" translatable="false">lostnfound-3024f.appspot.com</string>
+    <string name="project_id" translatable="false">lostnfound-3024f</string>
+</resources>

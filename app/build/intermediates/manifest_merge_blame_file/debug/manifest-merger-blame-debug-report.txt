@@ -1,0 +1,213 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.dku_lf"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.CAMERA" />
+11-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:5:5-65
+11-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:5:22-62
+12
+13    <uses-feature android:name="android.hardware.camera" />
+13-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:7:5-60
+13-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:7:19-57
+14    <uses-feature android:name="android.hardware.camera.autofocus" />
+14-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:8:5-70
+14-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:8:19-67
+15    <!--
+16         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+17         Google Maps Android API v2, but you must specify either coarse or fine
+18         location permissions for the "MyLocation" functionality.
+19    -->
+20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+20-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:14:5-79
+20-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:14:22-76
+21
+22    <!-- Include required permissions for Google Maps API to run. -->
+23    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+23-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+23-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+24    <uses-permission android:name="android.permission.INTERNET" />
+24-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+24-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:22-64
+25
+26    <uses-feature
+26-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+27        android:glEsVersion="0x00020000"
+27-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+28        android:required="true" />
+28-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+29
+30    <application
+30-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:16:5-56:19
+31        android:allowBackup="true"
+31-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:17:9-35
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\980630e158f38ced2d00e440ae193d30\core-1.3.1\AndroidManifest.xml:24:18-86
+33        android:debuggable="true"
+34        android:extractNativeLibs="false"
+35        android:icon="@mipmap/ic_launcher"
+35-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:18:9-43
+36        android:label="@string/app_name"
+36-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:19:9-41
+37        android:roundIcon="@mipmap/ic_launcher_round"
+37-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:20:9-54
+38        android:supportsRtl="true"
+38-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:21:9-35
+39        android:testOnly="true"
+40        android:theme="@style/AppTheme" >
+40-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:22:9-40
+41        <activity
+41-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:23:9-26:68
+42            android:name="com.example.dku_lf.WritingActivity"
+42-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:24:13-44
+43            android:label="@string/title_activity_writing"
+43-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:25:13-59
+44            android:theme="@style/AppTheme.NoActionBar" />
+44-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:26:13-56
+45        <activity
+45-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:27:9-30:59
+46            android:name="com.example.dku_lf.BoardActivity"
+46-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:28:13-42
+47            android:label="@string/title_activity_board"
+47-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:29:13-57
+48            android:theme="@style/AppTheme.NoActionBar" />
+48-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:30:13-56
+49        <!--
+50             The API key for Google Maps-based APIs is defined as a string resource.
+51             (See the file "res/values/google_maps_api.xml").
+52             Note that the API key is linked to the encryption key used to sign the APK.
+53             You need a different API key for each encryption key, including the release key that is used to
+54             sign the APK for publishing.
+55             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+56        -->
+57        <meta-data
+57-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:39:9-41:55
+58            android:name="com.google.android.geo.API_KEY"
+58-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:40:13-58
+59            android:value="@string/google_maps_key" />
+59-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:41:13-52
+60
+61        <activity
+61-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:43:9-45:59
+62            android:name="com.example.dku_lf.HomeActivity"
+62-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:44:13-41
+63            android:label="@string/title_activity_home" />
+63-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:45:13-56
+64        <activity android:name="com.example.dku_lf.RegActivity" />
+64-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:47:9-49
+64-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:47:19-46
+65        <activity android:name="com.example.dku_lf.LoginActivity" >
+65-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:49:9-54:20
+65-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:49:19-48
+66            <intent-filter>
+66-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:50:13-53:29
+67                <action android:name="android.intent.action.MAIN" />
+67-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:51:17-69
+67-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:51:25-66
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:52:17-77
+69-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:52:27-74
+70            </intent-filter>
+71        </activity>
+72        <activity android:name="com.example.dku_lf.CameraActivity" />
+72-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:55:9-52
+72-->C:\Users\zdrgn\AndroidStudioProjects\DKU_LF\app\src\main\AndroidManifest.xml:55:19-49
+73        <activity
+73-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:24:9-31:50
+74            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+74-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:25:13-85
+75            android:excludeFromRecents="true"
+75-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:26:13-46
+76            android:exported="true"
+76-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:27:13-36
+77            android:launchMode="singleTask"
+77-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:28:13-44
+78            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+78-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:29:13-102
+79            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+79-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:30:13-72
+80
+81        <service
+81-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:33:9-39:19
+82            android:name="com.google.firebase.components.ComponentDiscoveryService"
+82-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:34:13-84
+83            android:directBootAware="true"
+83-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:35:13-43
+84            android:exported="false" >
+84-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:35:13-37
+85            <meta-data
+85-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:36:13-38:85
+86                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+86-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:37:17-109
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\626811f7e650cd16146f1c5ab7f97362\jetified-firebase-auth-19.4.0\AndroidManifest.xml:38:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-storage:19.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\aac464be750fe7e42c6e3ef59b1c2d74\jetified-firebase-storage-19.2.0\AndroidManifest.xml:33:13-35:85
+89                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+89-->[com.google.firebase:firebase-storage:19.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\aac464be750fe7e42c6e3ef59b1c2d74\jetified-firebase-storage-19.2.0\AndroidManifest.xml:34:17-107
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-storage:19.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\aac464be750fe7e42c6e3ef59b1c2d74\jetified-firebase-storage-19.2.0\AndroidManifest.xml:35:17-82
+91            <meta-data
+91-->[com.google.firebase:firebase-database:19.5.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\2e4ccb7969f494686450358e4a1c1ade\jetified-firebase-database-19.5.0\AndroidManifest.xml:32:13-34:85
+92                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+92-->[com.google.firebase:firebase-database:19.5.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\2e4ccb7969f494686450358e4a1c1ade\jetified-firebase-database-19.5.0\AndroidManifest.xml:33:17-109
+93                android:value="com.google.firebase.components.ComponentRegistrar" />
+93-->[com.google.firebase:firebase-database:19.5.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\2e4ccb7969f494686450358e4a1c1ade\jetified-firebase-database-19.5.0\AndroidManifest.xml:34:17-82
+94        </service> <!-- Needs to be explicitly declared on P+ -->
+95        <uses-library
+95-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+96            android:name="org.apache.http.legacy"
+96-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+97            android:required="false" />
+97-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+98
+99        <activity
+99-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+100            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+100-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+101            android:exported="false"
+101-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+102            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+102-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+103
+104        <provider
+104-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:26:9-31:39
+105            android:name="com.google.firebase.provider.FirebaseInitProvider"
+105-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:27:13-77
+106            android:authorities="com.example.dku_lf.firebaseinitprovider"
+106-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:28:13-72
+107            android:directBootAware="true"
+107-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:29:13-43
+108            android:exported="false"
+108-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:30:13-37
+109            android:initOrder="100" />
+109-->[com.google.firebase:firebase-common:19.3.1] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\9263446f4e667a45eb7a42eb61ed3210\jetified-firebase-common-19.3.1\AndroidManifest.xml:31:13-36
+110
+111        <meta-data
+111-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\f258e3825c6af3b14c7ec1616fae4742\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+112            android:name="com.google.android.gms.version"
+112-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\f258e3825c6af3b14c7ec1616fae4742\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+113            android:value="@integer/google_play_services_version" />
+113-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\f258e3825c6af3b14c7ec1616fae4742\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+114
+115        <provider
+115-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+116            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+116-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+117            android:authorities="com.example.dku_lf.lifecycle-process"
+117-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+118            android:exported="false"
+118-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+119            android:multiprocess="true" />
+119-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\zdrgn\.gradle\caches\transforms-2\files-2.1\fbb45a1792cf0e97ccf5507b087b63b1\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+120    </application>
+121
+122</manifest>
