@@ -27,6 +27,9 @@ https://console.firebase.google.com/project/lostnfound-3024f/overview
 구글맵 API 연결, 지도에 마커 표시
 https://mailmail.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/9.%20%EA%B5%AC%EA%B8%80%EB%A7%B5%20API
 
+firebase 기반 채팅
+https://medium.com/@nanyoung18/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4-%EA%B8%B0%EC%B4%88-6-%EC%B1%84%ED%8C%85-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0-97c8f83e5bdf
+
 구글맵은 일단 내 계정으로 만들기는 했으나 (체험판)
 문서를 좀더 찾아보고 제대로 연결해야 할듯
 
