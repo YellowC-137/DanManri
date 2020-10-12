@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WritingActivity">
+
+    <EditText
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/submitBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="제목"
+        />
+    <EditText
+        android:id="@+id/MainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="27"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/Title"
+        app:layout_constraintBottom_toTopOf="@id/addPhotoBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="본문"
+        android:gravity="top"
+        android:ems="10"
+        android:layout_margin="5dp"
+        />
+
+    //갤러리로 이동
+    <Button
+    android:id="@+id/addPhotoBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:drawableTop="@drawable/ic_baseline_photo_camera_24"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent" />
+    //지도상 현재위치 제공
+    <Button
+        android:id="@+id/addMapBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:drawableTop = "@drawable/ic_baseline_map_24"
+        app:layout_constraintStart_toEndOf="@id/addPhotoBtn"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Submit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
