@@ -14,8 +14,10 @@ https://www.youtube.com/playlist?list=PLva6rQOdsvQXdSBN1r2mEt_tqES6NjKKj : 개�
 
 FireBase 문서
 https://firebase.google.com/docs/android/setup
+
 구글맵 문서
 https://developers.google.com/maps/documentation/android-sdk/overview?hl=ko
+
 안드로이드 문서
 https://developer.android.com/docs?hl=ko
 
@@ -24,6 +26,9 @@ https://console.firebase.google.com/project/lostnfound-3024f/overview
 
 구글맵 API 연결, 지도에 마커 표시
 https://mailmail.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/9.%20%EA%B5%AC%EA%B8%80%EB%A7%B5%20API
+
+firebase 기반 채팅
+https://medium.com/@nanyoung18/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4-%EA%B8%B0%EC%B4%88-6-%EC%B1%84%ED%8C%85-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0-97c8f83e5bdf
 
 구글맵은 일단 내 계정으로 만들기는 했으나 (체험판)
 문서를 좀더 찾아보고 제대로 연결해야 할듯
@@ -39,8 +44,18 @@ Fragment가 아닌 그냥 Activity로 구현하기?
 10.05
 로그인시 id,pw 경우 설정 해야함
 슬라이드뷰가 아닌 버튼으로 lost,found 설정?
+progressbar 설정 - 전역
 
+Warning:(23, 9) Hardcoded string "Notify page", should use `@string` resource
+Warning:(31, 18) Casting 'findViewById(...)' to 'EditText' is redundant
+Warning:(24, 17) 'androidx.lifecycle.ViewModelProviders' is deprecated
+몇몇 warning들 확인
 
+10/06
+Fragment - Home(게시판),notify(알림?-추후 수정예정),map,setting fragment
+스크롤기능 X : 없어도 되는지 모르겠음, 추후에 추가
+HomeActivity crash
+게시판 글쓰기 까지 구현, 게시판 글모음 보기 X
 
 ===============전문가 자문 관련=================
 안녕하세요?
