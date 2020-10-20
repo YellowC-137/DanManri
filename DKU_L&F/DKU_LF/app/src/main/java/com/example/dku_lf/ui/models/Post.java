@@ -2,31 +2,25 @@ package com.example.dku_lf.ui.models;
 
 public class Post {
 
-    private String documentId;
+    private String Id;;
     private String title;
     private String contents;
-
-    /* 서버를 이용한 시간 받기
-    @ServerTimestamp
-    private Date date;
-     */
 
     public Post() {
     }
 
-    public Post(String documentId, String title, String contents) {
-        this.documentId = documentId;
+    public Post(String id, String title, String contents) {
+        Id = id;
         this.title = title;
         this.contents = contents;
-        //this.data = data;
     }
 
-    public String getDocumentId() {
-        return documentId;
+    public String getId() {
+        return Id;
     }
 
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getTitle() {
@@ -45,23 +39,12 @@ public class Post {
         this.contents = contents;
     }
 
-    /* 시간 부분
-    public Date getDate() {
-        return data;
-    }
-
-    public void setData(Date date) {
-        this.data = data;
-    }
-    */
-
     @Override
     public String toString() {
         return "Post{" +
-                "documentId='" + documentId + '\'' +
+                "Id='" + Id + '\'' +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
-                //", date=" +date =
                 '}';
     }
 }

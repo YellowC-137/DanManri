@@ -42,19 +42,22 @@ public class LostFragment extends Fragment implements View.OnClickListener {
 
         lPostRecyclerView = root.findViewById(R.id.lost_recyclerview);
 
-        lAdapter = new PostAdapter(lDatas);
-        lPostRecyclerView.setAdapter(lAdapter);
+
 
         //샘플 게시판 모양
+        lDatas = new ArrayList<>();
         lDatas.add(new Post(null, "title", "contents"));
         lDatas.add(new Post(null, "title", "contents"));
         lDatas.add(new Post(null, "title", "contents"));
 
+        lAdapter = new PostAdapter(lDatas);
+        lPostRecyclerView.setAdapter(lAdapter);
 
         root.findViewById(R.id.lost_WriteBtn).setOnClickListener(this);
 
         return root;
     }
+
 
     /* Firebase 연동 실시간 게시글 생성
     @Override
@@ -86,7 +89,6 @@ public class LostFragment extends Fragment implements View.OnClickListener {
     }
      */
 
-    //버튼으로 글쓰기 액티비티로 이동
     @Override
     public void onClick(View v) {
         startActivity(new Intent(getActivity(), WritingActivity.class));
