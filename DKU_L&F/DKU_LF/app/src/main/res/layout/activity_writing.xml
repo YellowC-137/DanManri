@@ -7,17 +7,17 @@
     tools:context=".WritingActivity">
 
     <EditText
-        android:id="@+id/Title"
+        android:id="@+id/title_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="제목"
-        android:inputType="textMultiLine"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/MainText"
+        android:id="@+id/contentText_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/submitBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title" />
+        app:layout_constraintTop_toBottomOf="@+id/title_edit" />
 
     //갤러리로 이동
 
@@ -41,7 +41,7 @@
         android:drawableTop="@drawable/ic_baseline_photo_camera_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainText" />
+        app:layout_constraintTop_toBottomOf="@+id/contentText_edit" />
     //지도상 현재위치 제공
 
     <Button
@@ -52,7 +52,7 @@
         android:drawableTop="@drawable/ic_baseline_map_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/addPhotoBtn"
-        app:layout_constraintTop_toBottomOf="@+id/MainText" />
+        app:layout_constraintTop_toBottomOf="@+id/contentText_edit" />
 
     <Button
         android:id="@+id/submitBtn"

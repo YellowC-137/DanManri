@@ -23,7 +23,7 @@
         <activity
             android:name=".WritingActivity"
             android:label="@string/title_activity_writing"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BoardActivity"
             android:label="@string/title_activity_board"
@@ -43,12 +43,11 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" />
-
         <activity android:name=".RegActivity" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
