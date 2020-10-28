@@ -57,7 +57,7 @@ public class WritingActivity extends AppCompatActivity implements View.OnClickLi
             data.put(FirebaseID.contents, lContents.getText().toString());
             lstore.collection(FirebaseID.post).document(lTitle.getText().toString()).set(data.SetOptions.merge());
             */
-            finish();
         }
+        finish();
     }
 }
