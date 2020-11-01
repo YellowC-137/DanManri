@@ -9,13 +9,16 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be82e9f8-95c1-4d7b-9606-10f3765ec3d9" name="Default Changelist" comment="" />
+    <list default="true" id="be82e9f8-95c1-4d7b-9606-10f3765ec3d9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_API_30" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_30" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -52,7 +55,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/DKU_L&amp;F/DKU_LF" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
@@ -205,10 +208,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="394" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1602036039205" />
-    <state x="549" y="138" key="FileChooserDialogImpl" timestamp="1602036615835">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="686" y="181" key="FileChooserDialogImpl" timestamp="1604168280404">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="549" y="138" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602036615835" />
+    <state x="686" y="181" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1604168280404" />
     <state x="1044" y="460" key="Github.ShareDialog" timestamp="1601999943712">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -245,10 +249,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1602003778695" />
-    <state x="220" y="247" key="com.intellij.ide.util.TipDialog" timestamp="1602480952754">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="275" y="324" key="com.intellij.ide.util.TipDialog" timestamp="1604168262958">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="220" y="247" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1602480952754" />
+    <state x="275" y="324" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604168262958" />
     <state x="801" y="48" width="620" height="771" key="find.popup" timestamp="1601912775935">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
