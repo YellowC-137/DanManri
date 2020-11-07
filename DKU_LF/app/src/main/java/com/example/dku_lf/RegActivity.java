@@ -16,11 +16,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegActivity extends AppCompatActivity {
     private static final String TAG = "RegActivity";
     EditText RegEtID,RegEtPW;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +70,7 @@ public class RegActivity extends AppCompatActivity {
                                 }
 
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(RegActivity.this,RegStEmail+" & "+RegStPW,Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegActivity.this,"Register Succesful!",Toast.LENGTH_LONG).show();
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
@@ -86,7 +88,7 @@ public class RegActivity extends AppCompatActivity {
                                 // ...
                             }
                         });
-                }
+            }
 
 
         });

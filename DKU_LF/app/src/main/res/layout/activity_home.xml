@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
+    android:layout_height="match_parent">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -30,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <!-- 플로팅 버튼 제거
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/writeBtn"
         android:layout_width="wrap_content"
@@ -41,5 +41,6 @@
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="15dp"
         />
+        -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,51 +33,52 @@ public class LoginActivity extends AppCompatActivity {
         Button BtntoReg = (Button)findViewById(R.id.LoginRegBtn);
 
         BtnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(LoginActivity.this,HomeActivity.class);
-                String LogstID = LogEtID.getText().toString();
-                String LogstPW = LogEtPW.getText().toString();
+                                        @Override
+                                        public void onClick(View v) {
+                                            final Intent in = new Intent(LoginActivity.this,HomeActivity.class);
+                                            String LogstID = LogEtID.getText().toString();
+                                            String LogstPW = LogEtPW.getText().toString();
 
-                if (LogstID.isEmpty())
-                {
-                    Toast.makeText(LoginActivity.this,"이메일을 입력해주세요",Toast.LENGTH_LONG).show();
-                    return;
-                }
-                
-                if(LogstPW.isEmpty())
-                {
-                    Toast.makeText(LoginActivity.this,"비밀번호를 입력해주세요",Toast.LENGTH_LONG).show();
-                    return;
-                }
+                                            if (LogstID.isEmpty())
+                                            {
+                                                Toast.makeText(LoginActivity.this,"이메일을 입력해주세요",Toast.LENGTH_LONG).show();
+                                                return;
+                                            }
 
-                mAuth.signInWithEmailAndPassword(LogstID, LogstPW)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                   // updateUI(user);
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    return;
-                                   // updateUI(null);
-                                }
+                                            if(LogstPW.isEmpty())
+                                            {
+                                                Toast.makeText(LoginActivity.this,"비밀번호를 입력해주세요",Toast.LENGTH_LONG).show();
+                                                return;
+                                            }
 
-                                // ...
-                            }
-                        }
+                                            mAuth.signInWithEmailAndPassword(LogstID, LogstPW)
+                                                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        // Sign in success, update UI with the signed-in user's information
+                                                                        Log.d(TAG, "signInWithEmail:success");
+                                                                        FirebaseUser user = mAuth.getCurrentUser();
+                                                                        startActivity(in);
+                                                                        // updateUI(user);
+                                                                    } else {
+                                                                        // If sign in fails, display a message to the user.
+                                                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                                                                Toast.LENGTH_SHORT).show();
+                                                                        return;
+                                                                        // updateUI(null);
+                                                                    }
 
-                        );
+                                                                    // ...
+                                                                }
+                                                            }
+
+                                                    );
 
 
-                startActivity(in);    }
-        }
+                                                }
+                                    }
         );
 
         BtntoReg.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-     //나중에 추가!    updateUI(currentUser);
+        //나중에 추가!    updateUI(currentUser);
     }
 
 }
