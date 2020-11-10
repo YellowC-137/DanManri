@@ -1,5 +1,6 @@
 package com.example.dku_lf;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -17,13 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WritingActivity extends AppCompatActivity implements View.OnClickListener {
+public class WritingActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore lStore = FirebaseFirestore.getInstance();
@@ -36,29 +38,51 @@ public class WritingActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_writing);
 
 
+        Button PhBtn = (Button)findViewById(R.id.addPhotoBtn);
+        Button MapBtn = (Button)findViewById(R.id.addMapBtn);
+        Button Submit = (Button)findViewById(R.id.submitBtn);
+
         lTitle = findViewById(R.id.title_edit);
         lContents = findViewById(R.id.contentText_edit);
 
-        findViewById(R.id.submitBtn).setOnClickListener(this);
-    }
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Write = new Intent(WritingActivity.this,HomeActivity.class);
+                if(mAuth.getCurrentUser() != null) {
+                    // 타이틀이 같아도  생성되도록 함
+                    String postId = lStore.collection(FirebaseID.post).document().getId();
+
+                    //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
+                    Map<String, Object> data = new HashMap<>();
+                    data.put(FirebaseID.documentId, mAuth.getCurrentUser().getUid());
+                    data.put(FirebaseID.title, lTitle.getText().toString());
+                    data.put(FirebaseID.contents, lContents.getText().toString());
+                    data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                    lStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
+                }
+                startActivity(Write);
+            }
+        });
 
 
+        //사진, 일단은 찍는거고 나중에 사진첨부로 변경해야함!
+        PhBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(WritingActivity.this,CameraActivity.class);
+                startActivity(in);
+                return;
+            }
+        });
 
-    //submit 버튼 클릭
-    @Override
-    public void onClick(View v) {
-        if(mAuth.getCurrentUser() != null) {
-            // 타이틀이 같아도  생성되도록 함
-            String postId = lStore.collection(FirebaseID.post).document().getId();
-
-            //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
-            Map<String, Object> data = new HashMap<>();
-            data.put(FirebaseID.documentId, mAuth.getCurrentUser().getUid());
-            data.put(FirebaseID.title, lTitle.getText().toString());
-            data.put(FirebaseID.contents, lContents.getText().toString());
-            data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
-            lStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
-        }
-        finish();
+        //지도
+        MapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Location = new Intent(WritingActivity.this,LocationActivity.class);
+                startActivity(Location);
+            }
+        });
     }
 }

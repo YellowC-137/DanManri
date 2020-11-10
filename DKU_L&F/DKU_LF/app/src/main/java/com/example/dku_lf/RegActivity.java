@@ -11,21 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.dku_lf.database.FirebaseID;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegActivity extends AppCompatActivity {
     private static final String TAG = "RegActivity";
-    EditText RegID,RegPW,RegCfPW;
+    EditText RegEtID,RegEtPW;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     @Override
@@ -35,13 +30,12 @@ public class RegActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        RegID = (EditText) findViewById(R.id.RegEmail);
-        RegPW = (EditText) findViewById(R.id.RegPw);
-        RegCfPW = (EditText)findViewById(R.id.RegPwConfirm);
-        final String RegStPW = RegPW.getText().toString();
-        final String RegStID = RegID.getText().toString();
-        final String RegStCfPW = RegCfPW.getText().toString();
+        RegEtID = (EditText)findViewById(R.id.RegEmail);
+        RegEtPW = (EditText)findViewById(R.id.RegPw);
+
+
         Button BtnPh = (Button)findViewById(R.id.RegPhoto);
+
 
         BtnPh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,27 +49,48 @@ public class RegActivity extends AppCompatActivity {
         BtnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                mAuth.createUserWithEmailAndPassword(RegStID, RegStPW)
+                final String RegStEmail = RegEtID.getText().toString().trim();
+                final String RegStPW = RegEtPW.getText().toString().trim();
+                final Intent a = new Intent(RegActivity.this,LoginActivity.class);
+                mAuth.createUserWithEmailAndPassword(RegStEmail, RegStPW)
                         .addOnCompleteListener(RegActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    if(user != null) { //user가 null값이 아닐 때 Map에 Uid, Email, PW 입력
-                                        Map<String, Object> userMap = new HashMap<>();
-                                        userMap.put(FirebaseID.documentId, user.getUid());
-                                        userMap.put(FirebaseID.email, RegStID);
-                                        userMap.put(FirebaseID.password, RegStPW);
-                                        mStore.collection(FirebaseID.user).document(user.getUid()).set(userMap, SetOptions.merge()); //marge는 document 새로 추가될 때 덮어쓰기.
-                                        finish();
-                                    }
-                                } else {
-                                    Toast.makeText(RegActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+
+                                if (RegStEmail.isEmpty())
+                                {
+                                    Toast.makeText(RegActivity.this,"이메일을 입력해주세요",Toast.LENGTH_LONG).show();
+                                    return;
                                 }
+
+                                if(RegStPW.isEmpty())
+                                {
+                                    Toast.makeText(RegActivity.this,"비밀번호를 입력해주세요",Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(RegActivity.this,"Register Succesful!",Toast.LENGTH_LONG).show();
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "createUserWithEmail:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    startActivity(a);
+                                    // updateUI(user);
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                    Toast.makeText(RegActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                    return;
+                                    //  updateUI(null);
+                                }
+
+                                // ...
                             }
                         });
-                }
+            }
+
+
         });
     }
 }

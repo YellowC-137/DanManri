@@ -1,33 +1,26 @@
 package com.example.dku_lf.ui.models;
 
-import com.google.firebase.firestore.ServerTimestamp;
-
-import java.util.Date;
-
 public class Post {
 
-    private String documentId;;
+    private String Id;;
     private String title;
     private String contents;
-    @ServerTimestamp
-    private Date date;
 
     public Post() {
     }
 
-    public Post(String documentId, String title, String contents) {
-        this.documentId = documentId;
+    public Post(String id, String title, String contents) {
+        Id = id;
         this.title = title;
         this.contents = contents;
-        // this.date = date;
     }
 
     public String getId() {
-        return documentId;
+        return Id;
     }
 
-    public void setId(String documentId) {
-        this.documentId = documentId;
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getTitle() {
@@ -46,21 +39,12 @@ public class Post {
         this.contents = contents;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     @Override
     public String toString() {
         return "Post{" +
-                "documentId='" + documentId + '\'' +
+                "Id='" + Id + '\'' +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
-                ", date=" + date +
                 '}';
     }
 }

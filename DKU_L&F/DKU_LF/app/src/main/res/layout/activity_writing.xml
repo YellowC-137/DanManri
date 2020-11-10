@@ -14,7 +14,9 @@
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:privateImeOptions="defaultInputmode=korean"
+        />
 
     <EditText
         android:id="@+id/contentText_edit"
@@ -25,20 +27,23 @@
         android:gravity="top"
         android:hint="본문"
         android:inputType="textMultiLine"
-        android:lines="27"
+        android:lines="25"
         app:layout_constraintBottom_toTopOf="@+id/submitBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/title_edit"
+        android:privateImeOptions="defaultInputmode=korean"
+        />
 
     //갤러리로 이동
 
     <Button
         android:id="@+id/addPhotoBtn"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:drawableTop="@drawable/ic_baseline_photo_camera_24"
+        android:background="#B8B2B2"
+        android:text="사진첨부하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contentText_edit" />
@@ -46,10 +51,11 @@
 
     <Button
         android:id="@+id/addMapBtn"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:drawableTop="@drawable/ic_baseline_map_24"
+        android:background="#B8B2B2"
+        android:text="위치표시하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/addPhotoBtn"
         app:layout_constraintTop_toBottomOf="@+id/contentText_edit" />
@@ -59,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Submit"
+        android:text="글쓰기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

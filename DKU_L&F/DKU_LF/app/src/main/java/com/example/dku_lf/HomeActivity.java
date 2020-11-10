@@ -2,8 +2,12 @@ package com.example.dku_lf;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,6 +24,20 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent keyintent = new Intent(this, KeywordBack.class);
+        startService(keyintent);
+
+        //백그라운드로 실행할 수 있는 service KeywordBack 실행
+        /*
+        final Intent keyintent = new Intent(this, KeywordBack.class);
+        try {
+            startService(keyintent);
+
+        }catch (Exception e){
+            stopService(keyintent);
+        }
+*/
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
