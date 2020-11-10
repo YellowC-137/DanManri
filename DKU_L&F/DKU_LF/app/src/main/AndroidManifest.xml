@@ -3,9 +3,6 @@
     package="com.example.dku_lf">
 
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -20,13 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".KeywordBack"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".ui.notifications.KeywordActivity" />
         <activity
             android:name=".WritingActivity"
             android:label="@string/title_activity_writing"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".BoardActivity"
-            android:label="@string/title_activity_board"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -41,14 +40,16 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".LocationActivity"
+            android:label="@string/title_activity_location" />
+        <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" />
-
         <activity android:name=".RegActivity" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
