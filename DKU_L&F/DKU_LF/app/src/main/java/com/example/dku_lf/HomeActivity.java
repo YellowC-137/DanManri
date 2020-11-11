@@ -25,9 +25,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Intent keyintent = new Intent(this, KeywordBack.class);
-        startService(keyintent);
-
         //백그라운드로 실행할 수 있는 service KeywordBack 실행
         /*
         final Intent keyintent = new Intent(this, KeywordBack.class);
