@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dku_lf.R;
-import com.example.dku_lf.WritingActivity;
+import com.example.dku_lf.LostWritingActivity;
 import com.example.dku_lf.adapters.PostAdapter;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.models.Post;
@@ -29,22 +29,57 @@ import java.util.Map;
 
 public class FoundFragment extends Fragment implements View.OnClickListener {
 
+    private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+
     private RecyclerView fPostRecyclerView;
+
+    private PostAdapter fAdapter;
+    private List<Post> fDatas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        fDatas = new ArrayList<>();
+
         View root = inflater.inflate(R.layout.fragment_found, container, false);
 
         fPostRecyclerView = root.findViewById(R.id.found_recyclerview);
+
         root.findViewById(R.id.found_WriteBtn).setOnClickListener(this);
 
         return root;
     }
 
     @Override
-    public void onClick(View v) {
-        startActivity(new Intent(getActivity(), WritingActivity.class));
+    public void onStart() {
+        super.onStart();
+        fStore.collection(FirebaseID.post_found)
+                .orderBy(FirebaseID.timestamp, Query.Direction.DESCENDING)  // 시간순서대로 내림차순
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException error) {
+                        if(queryDocumentSnapshots != null) {
+                            fDatas.clear();
+                            for (DocumentSnapshot snap : queryDocumentSnapshots.getDocuments()) {
+                                Map<String, Object> shot = snap.getData();
+                                String documentId = String.valueOf(shot.get(FirebaseID.documentId));
+                                String title = String.valueOf(shot.get(FirebaseID.title));
+                                String contents = String.valueOf(shot.get(FirebaseID.contents));
+                                Post data = new Post(documentId, title, contents);
+                                fDatas.add(data);
+                            }
+                        }
+                        fAdapter = new PostAdapter(fDatas);
+                        fPostRecyclerView.setAdapter(fAdapter);
+                    }
+                });
     }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getActivity(), LostWritingActivity.class));
+    }
+
+
 }

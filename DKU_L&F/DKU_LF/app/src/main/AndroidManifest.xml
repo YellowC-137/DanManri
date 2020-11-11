@@ -17,14 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FoundWritingActivity"></activity>
+
         <service
             android:name=".KeywordBack"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".ui.notifications.KeywordActivity" />
         <activity
-            android:name=".WritingActivity"
+            android:name=".LostWritingActivity"
             android:label="@string/title_activity_writing"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--

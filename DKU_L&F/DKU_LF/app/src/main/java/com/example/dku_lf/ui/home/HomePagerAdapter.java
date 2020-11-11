@@ -16,7 +16,7 @@ public class HomePagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch(position){
             case 0:
-                return new LostFragment();
+                return new FoundFragment();
             case 1:
                 return new LostFragment();
             default:
