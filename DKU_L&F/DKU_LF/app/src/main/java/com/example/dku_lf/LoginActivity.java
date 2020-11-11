@@ -90,12 +90,17 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-    @Override
-    public void onStart() {
+
+    @Override // public을 protected로 수정함
+    protected void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        //나중에 추가!    updateUI(currentUser);
+        FirebaseUser user = mAuth.getCurrentUser();
+        /*자동 로그인 추가하기
+        if(user != null) {
+            Toast.makeText(this,"자동 로그인", Toast.LENGTH_SHORT).show();
+        }
+         */
+
     }
 
 }

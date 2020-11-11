@@ -37,7 +37,6 @@ public class WritingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writing);
 
-
         Button PhBtn = (Button)findViewById(R.id.addPhotoBtn);
         Button MapBtn = (Button)findViewById(R.id.addMapBtn);
         Button Submit = (Button)findViewById(R.id.submitBtn);
@@ -55,7 +54,7 @@ public class WritingActivity extends AppCompatActivity {
 
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
                     Map<String, Object> data = new HashMap<>();
-                    data.put(FirebaseID.documentId, mAuth.getCurrentUser().getUid());
+                    data.put(FirebaseID.documentId, postId);
                     data.put(FirebaseID.title, lTitle.getText().toString());
                     data.put(FirebaseID.contents, lContents.getText().toString());
                     data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());

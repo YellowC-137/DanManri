@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FoundWritingActivity"></activity>
+        <activity android:name=".FoundPostActivity"></activity>
+        <activity android:name=".FoundWritingActivity" />
 
         <service
             android:name=".KeywordBack"
