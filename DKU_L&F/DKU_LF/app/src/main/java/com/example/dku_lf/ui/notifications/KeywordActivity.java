@@ -6,6 +6,7 @@ import androidx.core.app.NotificationCompat;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.dku_lf.KeywordBack;
 import com.example.dku_lf.R;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.databinding.ActivityKeywordBinding;
@@ -66,38 +68,24 @@ public class KeywordActivity extends AppCompatActivity {
             }
         });
 
-        stop.setOnClickListener(new View.OnClickListener() {
-
-
-            private void createNotification() { // 기본 알림
-
-
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "default");
-
-                builder.setSmallIcon(R.mipmap.ic_launcher);
-                builder.setContentTitle("알림 제목");
-                builder.setContentText("알람 세부 텍스트");
-
-                builder.setColor(Color.RED);
-                // 사용자가 탭을 클릭하면 자동 제거
-                builder.setAutoCancel(true);
-
-                // 알림 표시
-                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
-                }
-
-                // id값은
-                // 정의해야하는 각 알림의 고유한 int값
-                notificationManager.notify(1, builder.build());
-            }
+        start.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                createNotification();
+                Intent keyintent = new Intent(getApplicationContext(), KeywordBack.class);
+                startService(keyintent);
 
+            }
+        });
+
+        stop.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent keyintent = new Intent(getApplicationContext(), KeywordBack.class);
+                stopService(keyintent);
 
             }
         });

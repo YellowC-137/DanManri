@@ -17,7 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FoundWritingActivity"></activity>
+        <service
+            android:name=".background.KeywordService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".Background.KeywordService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".FoundWritingActivity" />
 
         <service
             android:name=".KeywordBack"
