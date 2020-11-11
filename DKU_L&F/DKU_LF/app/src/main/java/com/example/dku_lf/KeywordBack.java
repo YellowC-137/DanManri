@@ -54,41 +54,15 @@ public class KeywordBack extends Service {
     public String new_title;
     String email = mAuth.getCurrentUser().getEmail();
     private NotificationManager notificationManager;
+    public static final String CHANNEL_ID = "keyword channel";
     DocumentReference keyRef = lStore.collection(FirebaseID.keyword).document(email);
+    public String add_post_flag;
+    public boolean repeat = false;
     ListenerRegistration registration;
 
 
     public KeywordBack() {
     }
-
-    public void KeywordNotification(String new_contents, String new_title){
-
-        for(int i=0; i<words.size(); i++){
-            if(new_title.indexOf(words.get(i)) != -1 || new_contents.indexOf(words.get(i)) != -1){
-
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "default");
-
-                builder.setSmallIcon(R.mipmap.ic_launcher);
-                builder.setContentTitle("[키워드 알림] '" + words.get(i) + "' 관련 새 글이 등록되었습니다.");
-                builder.setColor(Color.RED);
-                // 사용자가 탭을 클릭하면 자동 제거
-                builder.setAutoCancel(true);
-
-                // 알림 표시
-                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
-                }
-
-                // id값은
-                // 정의해야하는 각 알림의 고유한 int값
-                notificationManager.notify((int)(System.currentTimeMillis()/1000), builder.build());
-
-            }
-        }
-
-    }
-
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -99,8 +73,22 @@ public class KeywordBack extends Service {
     @Override
     public void onCreate(){ // 백그라운드 서비스가 처음 실행될 때 한 번만 실행되는 메소드
         super.onCreate();
+        keyRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
 
-        Log.w(TAG, "서비스 생성");
+                if (snapshot != null && snapshot.exists()) {
+                    words = (List) snapshot.getData().get(FirebaseID.words);
+                } else {
+                    Log.d(TAG, "Field 'words' is Empty");
+                }
+            }
+        }); // 자신의 keyword document가 변동될 경우 String List words에 변경된 키워드를 실시간으로 받는다.
 
     }
 
@@ -109,8 +97,9 @@ public class KeywordBack extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
 
-        Log.w(TAG, "서비스 실행 중...");
+        Log.w(TAG, "서비스 시작");
         boolean already_noti = false;
+
 
 
             keyRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -122,24 +111,18 @@ public class KeywordBack extends Service {
                         return;
                     }
 
-
-
                     if (snapshot != null && snapshot.exists()) {
                         words = (List) snapshot.getData().get(FirebaseID.words);
-                        Log.w(TAG, "현재 키워드 : " + words);
-
-                    }
-
-                    if(snapshot.getMetadata().isFromCache() == false){
-                        Log.w(TAG, "키워드에 변동이 있었습니다. 서비스를 재시작합니다.");
-                        stopSelf();
+                    } else {
+                        Log.d(TAG, "Field 'words' is Empty");
                     }
                 }
             }); // 자신의 keyword document가 변동될 경우 String List words에 변경된 키워드를 실시간으로 받는다.
 
 
 
-        registration = lStore.collection(FirebaseID.post_found)
+
+        registration = lStore.collection(FirebaseID.post)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot qvalue, @Nullable FirebaseFirestoreException error) {
@@ -156,15 +139,34 @@ public class KeywordBack extends Service {
                         if( meta.isFromCache() == false && meta.hasPendingWrites() == false){ // 두 번째 실행부터
                             for(DocumentChange dc : qvalue.getDocumentChanges()){
                                 if(dc.getType() == DocumentChange.Type.ADDED){ // 새로운 문서가 추가된 경우
-
+                                    Log.w(TAG, "추가된 도큐먼트의 타이틀 : " + dc.getDocument().getData().get("title"));
 
                                     new_title = dc.getDocument().getData().get(FirebaseID.title).toString();
                                     new_contents = dc.getDocument().getData().get(FirebaseID.contents).toString();
 
-                                    KeywordNotification(new_contents, new_title);
+                                    for(int i=0; i<words.size(); i++){
+                                        if(new_title.indexOf(words.get(i)) == -1 || new_contents.indexOf(words.get(i)) == -1){
 
-                                    Log.w(TAG, "추가된 Document Title : " + new_title);
+                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "default");
 
+                                            builder.setSmallIcon(R.mipmap.ic_launcher);
+                                            builder.setContentTitle("[키워드 알림] '" + words.get(i) + "' 관련 새 글이 등록되었습니다.");
+                                            builder.setColor(Color.RED);
+                                            // 사용자가 탭을 클릭하면 자동 제거
+                                            builder.setAutoCancel(true);
+
+                                            // 알림 표시
+                                            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
+                                            }
+
+                                            // id값은
+                                            // 정의해야하는 각 알림의 고유한 int값
+                                            notificationManager.notify(1, builder.build());
+
+                                        }
+                                    }
 
                                 }
                             }
@@ -173,7 +175,6 @@ public class KeywordBack extends Service {
 
                     }
                 });
-
 
 
             Log.w(TAG, "한 번 종료");
@@ -187,6 +188,6 @@ public class KeywordBack extends Service {
     public void onDestroy() {
         super.onDestroy();
 
-        Log.w(TAG, "서비스 종료됨");
+        registration.remove();
     }
 }

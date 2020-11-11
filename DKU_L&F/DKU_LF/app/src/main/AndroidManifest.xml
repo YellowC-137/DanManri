@@ -17,16 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name=".background.KeywordService"
-            android:enabled="true"
-            android:exported="true"></service>
-        <service
-            android:name=".Background.KeywordService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity android:name=".FoundWritingActivity" />
+        <activity android:name=".ui.home.lost.LostPostActivity"></activity>
+        <activity android:name=".ui.home.found.FoundPostActivity" />
+        <activity android:name=".ui.home.found.FoundWritingActivity" />
 
         <service
             android:name=".KeywordBack"
@@ -35,7 +28,7 @@
 
         <activity android:name=".ui.notifications.KeywordActivity" />
         <activity
-            android:name=".LostWritingActivity"
+            android:name=".ui.home.lost.LostWritingActivity"
             android:label="@string/title_activity_writing"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--

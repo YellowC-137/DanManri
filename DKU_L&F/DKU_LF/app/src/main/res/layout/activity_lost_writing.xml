@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFFFFF"
-    tools:context=".LostWritingActivity">
+    tools:context=".ui.home.lost.LostWritingActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
