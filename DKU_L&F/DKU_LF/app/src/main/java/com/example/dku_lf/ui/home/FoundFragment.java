@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.dku_lf.FoundWritingActivity;
 import com.example.dku_lf.R;
 import com.example.dku_lf.LostWritingActivity;
 import com.example.dku_lf.adapters.PostAdapter;
@@ -78,7 +79,7 @@ public class FoundFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(getActivity(), LostWritingActivity.class));
+        startActivity(new Intent(getActivity(), FoundWritingActivity.class));
     }
 
 
