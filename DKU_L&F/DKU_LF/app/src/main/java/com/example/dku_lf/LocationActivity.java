@@ -35,7 +35,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         Return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(LocationActivity.this, WritingActivity.class);
+                Intent in = new Intent(LocationActivity.this, LostWritingActivity.class);
                 startActivity(in);
             }
         });
