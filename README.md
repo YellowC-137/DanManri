@@ -94,3 +94,10 @@ HomeActivity에서 서비스 (KeywordBack.java) 실행
 6. 변수명 통일과 자바파일 패키지로 정리
 -> 변수명 FㅐundActivity와 LostActivity의 변수명(fStore나, lStroe)를 통일함
 -> ui > home > 에 found와 lost 패키지를 만들고 Writing과 post Activity를 넣어놨음 
+
+11/13
+준성
+채팅기능,아이콘 추가
+일단 지금은 설정부분에 쪽지함으로 가게 해둠 (나중에 게시글처럼 해두면 될듯? 시간순으로)
+ID가져오는데 null오류가 날거임, 이부분은 게시글에 쪽지보내기 버튼 추가하면서 고침
+Intent 제대로 연결하면 정상적으로 작동함.
