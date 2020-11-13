@@ -102,7 +102,7 @@ HomeActivity에서 서비스 (KeywordBack.java) 실행
 ID가져오는데 null오류가 날거임, 이부분은 게시글에 쪽지보내기 버튼 추가하면서 고침
 Intent 제대로 연결하면 정상적으로 작동함.
 
-11/13_현규
+===11/13_현규===
 게시글에 올라오는 item_post_layout을 살짝 수정함
 Realative + Linear로 3줄짜리로 만듦
 추가 할 내용은 Time, name, 댓글과 추천수
