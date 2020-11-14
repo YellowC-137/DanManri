@@ -18,4 +18,7 @@ public class FirebaseID {
     public static String UserID = "UserID";
     public static String words = "words";
 
+    public static String StudentName = "StudentName";
+    public static String StudentNum = "StudentNum";
+
 }

@@ -7,7 +7,7 @@
 
     <ScrollView
 
-        android:id="@+id/ScrollView1"
+        android:id="@+id/ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,7 +17,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/RegText"
                 android:layout_width="match_parent"
                 android:layout_height="158dp"
                 android:gravity="center"
@@ -25,7 +25,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/mailText"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:background="#46036FF4"
@@ -44,25 +44,12 @@
                 android:hint="단국대 이메일을 입력해주세요"
                 android:maxLength="30"
                 android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="25dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"/>
 
-            <EditText
-                android:id="@+id/EmailConfirm"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/rounded_edittext"
-                android:hint="이메일 확인"
-                android:maxLength="30"
-                android:inputType="textEmailAddress"
-                android:textSize="15sp" />
-
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/PassText"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:background="#46036FF4"
@@ -80,7 +67,8 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/rounded_edittext"
-                android:hint="사용하실 비밀번호를 입력해주세요 (최대 16자)"
+                android:hint="비밀번호를 입력해주세요 (6자 ~ 16자)"
+                android:inputType="textPassword"
                 android:maxLength="16"
                 android:textSize="15sp" />
 
@@ -94,11 +82,11 @@
                 android:maxLength="16"
                 android:background="@drawable/rounded_edittext"
                 android:hint="비밀번호 확인"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/UserText"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:background="#46036FF4"
@@ -109,7 +97,7 @@
                 android:layout_marginBottom="25dp"/>
 
             <TextView
-                android:id="@+id/textVieww7"
+                android:id="@+id/NameText"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:layout_marginBottom="5dp"
@@ -131,7 +119,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/NumText"
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:layout_marginBottom="5dp"

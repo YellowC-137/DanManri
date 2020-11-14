@@ -19,7 +19,13 @@ import androidx.fragment.app.Fragment;
 import com.example.dku_lf.HomeActivity;
 import com.example.dku_lf.LoginActivity;
 import com.example.dku_lf.R;
+import com.example.dku_lf.database.FirebaseID;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import static android.content.ContentValues.TAG;
 
 
 public class SettingFragment extends Fragment {
@@ -30,6 +36,8 @@ public class SettingFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         final FirebaseAuth mAuth = FirebaseAuth.getInstance(); // 현재 계정 상태 가져옴
+        final FirebaseFirestore lStore = FirebaseFirestore.getInstance();
+        final String email = mAuth.getCurrentUser().getEmail();
 
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_setting, container, false);
 
@@ -76,6 +84,39 @@ public class SettingFragment extends Fragment {
                 ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        // 자신의 키워드 삭제
+                        lStore.collection(FirebaseID.keyword).document(email)
+                                .delete()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG, "Error deleting document", e);
+                                    }
+                                });
+
+                        // 자신의 유저 정보 삭제
+                        lStore.collection(FirebaseID.user).document(email)
+                                .delete()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG, "Error deleting document", e);
+                                    }
+                                });
+
                         mAuth.getCurrentUser().delete();
                         dialog.dismiss();
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
