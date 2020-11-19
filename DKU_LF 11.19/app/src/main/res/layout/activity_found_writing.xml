@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.home.found.FoundWritingActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/title_edit_found"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="제목"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine|textFilter|textVisiblePassword|textNoSuggestions"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/contentText_edit_found"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine|textFilter|textVisiblePassword|textNoSuggestions"
+            android:maxLength="200"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            //갤러리로 이동
+
+            <Button
+                android:id="@+id/addPhotoBtn_found"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="0.2dp"
+                android:layout_weight="1"
+                android:text="사진첨부하기"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+
+            //지도상 현재위치 제공
+
+            <Button
+                android:id="@+id/addMapBtn_found"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="0.2dp"
+                android:layout_weight="1"
+                android:text="위치표시하기"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/submitBtn_found"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="완료"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
