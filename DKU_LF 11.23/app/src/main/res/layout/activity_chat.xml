@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.chat.ChatActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/Chat_backBtn"
+        android:text="return"
+        />
+//일단은 나눠서 해놨는데, 나중에 container를 이용하면 더 정교하게 할수있을듯?
+    <Button
+        android:id="@+id/ChatSend"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="보내기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/ChatText"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ChatSend"
+        android:background="#FFFFFF"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Chat_RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/Chat_backBtn"
+        app:layout_constraintBottom_toTopOf="@id/ChatSend"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
