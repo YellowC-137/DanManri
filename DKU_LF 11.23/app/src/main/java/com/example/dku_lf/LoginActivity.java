@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // 자동 로그인
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            UserAppliaction.user_id = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            data();
             Intent in = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(in);
         }
