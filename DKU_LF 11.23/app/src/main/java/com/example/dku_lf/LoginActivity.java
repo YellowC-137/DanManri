@@ -53,6 +53,12 @@ public class LoginActivity extends AppCompatActivity {
         Button BtntoReg = (Button)findViewById(R.id.LoginRegBtn);
         progressBar = (ProgressBar)findViewById(R.id.LoginProg);
 
+        // 자동 로그인
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent in = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(in);
+        }
+
         BtnLogin.setOnClickListener(new View.OnClickListener() {
 
                                         @Override
