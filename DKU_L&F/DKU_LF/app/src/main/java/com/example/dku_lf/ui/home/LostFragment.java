@@ -3,23 +3,20 @@ package com.example.dku_lf.ui.home;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.dku_lf.ui.home.found.FoundPostActivity;
-import com.example.dku_lf.ui.home.lost.LostPostActivity;
-import com.example.dku_lf.ui.home.lost.LostWritingActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.dku_lf.R;
 import com.example.dku_lf.adapters.PostAdapter;
 import com.example.dku_lf.database.FirebaseID;
+import com.example.dku_lf.ui.home.lost.LostPostActivity;
+import com.example.dku_lf.ui.home.lost.LostWritingActivity;
 import com.example.dku_lf.ui.models.Post;
 import com.example.dku_lf.ui.models.RecyclerViewItemClickListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class LostFragment extends Fragment implements View.OnClickListener, RecyclerViewItemClickListener.OnItemClickListener {
+public class LostFragment extends HomeFragment implements View.OnClickListener, RecyclerViewItemClickListener.OnItemClickListener {
 
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
@@ -76,7 +73,8 @@ public class LostFragment extends Fragment implements View.OnClickListener, Recy
                                 String documentId = String.valueOf(shot.get(FirebaseID.documentId));
                                 String title = String.valueOf(shot.get(FirebaseID.title));
                                 String contents = String.valueOf(shot.get(FirebaseID.contents));
-                                Post data = new Post(documentId, title, contents);
+                                String user = String.valueOf(shot.get(FirebaseID.user));
+                                Post data = new Post(documentId, title,user, contents);
                                 mDatas.add(data);
                             }
                         }

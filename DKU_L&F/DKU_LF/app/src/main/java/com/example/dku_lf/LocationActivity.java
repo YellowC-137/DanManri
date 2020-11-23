@@ -1,6 +1,9 @@
 package com.example.dku_lf;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,36 +11,59 @@ import android.widget.Button;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.dku_lf.ui.home.lost.LostWritingActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private android.app.FragmentManager fragmentManager;
+    private MapFragment mapFragment;
+
+
     private GoogleMap mMap;
 
     private FragmentManager getChildFragmentManager;
+    private String postid,postname,posttype;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.LocFrag);
+
+        fragmentManager = getFragmentManager();
+        mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.LocFrag);
         mapFragment.getMapAsync(this);
+
+
+        postid = getIntent().getStringExtra("postuid");
+        postname = getIntent().getStringExtra("postname");
+        posttype = getIntent().getStringExtra("posttype");
+
+        Button myloc = (Button)findViewById(R.id.Locmyloc);
+
+        myloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         Button Return = (Button)findViewById(R.id.LocBtn);
         Return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(LocationActivity.this, LostWritingActivity.class);
-                startActivity(in);
+                finish();
             }
         });
     }
@@ -67,12 +93,16 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
             public void onMapClick(LatLng point) {
                 MarkerOptions mOptions = new MarkerOptions();
                 // 마커 타이틀
-                mOptions.title("좌표");
+                if (posttype=="1")
+                {  mOptions.title("분실물");}
+                else if (posttype =="2")
+                {mOptions.title("습득물");}
+
+                mOptions.snippet(postname);
 
                 Double latitude = point.latitude; // 위도
                 Double longitude = point.longitude; // 경도
                 // 마커의 스니펫(간단한 텍스트) 설정
-                mOptions.snippet(latitude.toString() + ", " + longitude.toString());
                 // LatLng: 위도 경도 쌍을 나타냄
                 mOptions.position(new LatLng(latitude, longitude));
                 // 마커(핀) 추가

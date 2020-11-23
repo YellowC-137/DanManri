@@ -73,6 +73,12 @@ public class RegActivity extends AppCompatActivity {
                     return;
                 }
 
+               /* if (RegStEmail.())
+                {
+                    Toast.makeText(RegActivity.this,"이미 존재하는 이메일 입니다.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+*/
                 if(RegStPW.isEmpty())
                 {
                     Toast.makeText(RegActivity.this,"비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show();
@@ -122,6 +128,7 @@ public class RegActivity extends AppCompatActivity {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         if(user != null) {
                                             Map<String, Object> userMap = new HashMap<>();
+                                            userMap.put(FirebaseID.UID,FirebaseAuth.getInstance().getCurrentUser().getUid());
                                             userMap.put(FirebaseID.email, RegStEmail);
                                             userMap.put(FirebaseID.StudentName, StudentName);
                                             userMap.put(FirebaseID.StudentNum, StudentNum);

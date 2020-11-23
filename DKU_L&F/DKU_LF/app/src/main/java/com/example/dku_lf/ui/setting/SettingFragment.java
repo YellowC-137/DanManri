@@ -15,11 +15,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.dku_lf.R;
 import com.example.dku_lf.HomeActivity;
 import com.example.dku_lf.LoginActivity;
-import com.example.dku_lf.R;
 import com.example.dku_lf.database.FirebaseID;
+import com.example.dku_lf.ui.chat.MessageActivity;
+import com.example.dku_lf.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +32,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import static android.content.ContentValues.TAG;
 
 
-public class SettingFragment extends Fragment {
+public class SettingFragment extends HomeFragment {
 
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         final FirebaseAuth mAuth = FirebaseAuth.getInstance(); // 현재 계정 상태 가져옴
         final FirebaseFirestore lStore = FirebaseFirestore.getInstance();

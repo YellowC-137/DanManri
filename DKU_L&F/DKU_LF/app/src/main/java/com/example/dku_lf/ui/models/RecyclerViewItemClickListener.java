@@ -34,10 +34,10 @@ public class RecyclerViewItemClickListener implements RecyclerView.OnItemTouchLi
             //길게 눌렀을 때
             @Override
             public void onLongPress(MotionEvent e) {
-                    View v = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                    if(v != null && listener != null) {
-                        listener.onItemLongClick(v, recyclerView.getChildAdapterPosition(v));
-                    }
+                View v = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                if(v != null && listener != null) {
+                    listener.onItemLongClick(v, recyclerView.getChildAdapterPosition(v));
+                }
             }
         });
     }

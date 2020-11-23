@@ -20,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +57,7 @@ public class WritingActivity extends AppCompatActivity {
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
                     Map<String, Object> data = new HashMap<>();
                     data.put(FirebaseID.documentId, mAuth.getCurrentUser().getUid());
+                    data.put(FirebaseID.email,mAuth.getCurrentUser().getEmail());
                     data.put(FirebaseID.title, lTitle.getText().toString());
                     data.put(FirebaseID.contents, lContents.getText().toString());
                     data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());

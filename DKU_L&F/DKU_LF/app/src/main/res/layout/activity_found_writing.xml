@@ -19,10 +19,8 @@
             android:gravity="top"
             android:hint="제목"
             android:imeOptions="actionDone"
-            android:inputType="textFilter|textVisiblePassword|textNoSuggestions"
+            android:inputType="textMultiLine|textFilter|textVisiblePassword|textNoSuggestions"
             android:padding="5dp"
-            android:maxLength="34"
-            android:maxLines="1"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold" />

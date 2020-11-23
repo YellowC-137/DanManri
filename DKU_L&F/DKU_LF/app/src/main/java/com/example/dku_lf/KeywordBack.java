@@ -1,6 +1,5 @@
 package com.example.dku_lf;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
@@ -10,17 +9,12 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.example.dku_lf.database.FirebaseID;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -29,19 +23,14 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.SnapshotMetadata;
 
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import io.grpc.Metadata;
 
 import static android.content.ContentValues.TAG;
 
@@ -51,7 +40,8 @@ public class KeywordBack extends Service {
     private FirebaseFirestore lStore = FirebaseFirestore.getInstance();
     private List<String> words = new ArrayList();
     private String new_contents;
-    public String new_title;
+    private String new_title;
+    private String new_documentId;
     String email = mAuth.getCurrentUser().getEmail();
     private NotificationManager notificationManager;
     DocumentReference keyRef = lStore.collection(FirebaseID.keyword).document(email);
@@ -61,7 +51,7 @@ public class KeywordBack extends Service {
     public KeywordBack() {
     }
 
-    public void KeywordNotification(String new_contents, String new_title){
+    public void KeywordNotification(){
 
         for(int i=0; i<words.size(); i++){
             if(new_title.indexOf(words.get(i)) != -1 || new_contents.indexOf(words.get(i)) != -1){
@@ -83,6 +73,15 @@ public class KeywordBack extends Service {
                 // id값은
                 // 정의해야하는 각 알림의 고유한 int값
                 notificationManager.notify((int)(System.currentTimeMillis()/1000), builder.build());
+
+                Map<String, Object> data = new HashMap<>();
+                data.put(FirebaseID.title, "["+ words.get(i) +"]");
+                data.put(FirebaseID.contents, "키워드 [" + words.get(i) + "] 에 대한 새 글이 등록되었습니다.");
+                data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                data.put(FirebaseID.documentId, new_documentId);
+                Log.w(TAG, "새로운 도큐먼트 ID : " + new_documentId);
+                lStore.collection(FirebaseID.user).document(email).collection(FirebaseID.notifications)
+                        .document().set(data, SetOptions.merge());
 
             }
         }
@@ -110,7 +109,6 @@ public class KeywordBack extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
 
         Log.w(TAG, "서비스 실행 중...");
-        boolean already_noti = false;
 
 
         keyRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -160,8 +158,9 @@ public class KeywordBack extends Service {
 
                                     new_title = dc.getDocument().getData().get(FirebaseID.title).toString();
                                     new_contents = dc.getDocument().getData().get(FirebaseID.contents).toString();
+                                    new_documentId = dc.getDocument().getId();
 
-                                    KeywordNotification(new_contents, new_title);
+                                    KeywordNotification();
 
                                     Log.w(TAG, "추가된 Document Title : " + new_title);
 

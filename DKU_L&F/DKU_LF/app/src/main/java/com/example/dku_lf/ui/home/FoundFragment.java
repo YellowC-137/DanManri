@@ -3,22 +3,20 @@ package com.example.dku_lf.ui.home;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.dku_lf.ui.home.found.FoundWritingActivity;
-import com.example.dku_lf.ui.home.found.FoundPostActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.dku_lf.R;
 import com.example.dku_lf.adapters.PostAdapter;
 import com.example.dku_lf.database.FirebaseID;
+import com.example.dku_lf.ui.home.found.FoundPostActivity;
+import com.example.dku_lf.ui.home.found.FoundWritingActivity;
 import com.example.dku_lf.ui.models.Post;
 import com.example.dku_lf.ui.models.RecyclerViewItemClickListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,18 +30,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class FoundFragment extends Fragment implements View.OnClickListener, RecyclerViewItemClickListener.OnItemClickListener {
-
+public class FoundFragment extends HomeFragment implements View.OnClickListener, RecyclerViewItemClickListener.OnItemClickListener {
+//게시글 리스트
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
     private RecyclerView PostRecyclerView;
-
     private PostAdapter mAdapter;
     private List<Post> mDatas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
 
         mDatas = new ArrayList<>();
 
@@ -73,7 +72,8 @@ public class FoundFragment extends Fragment implements View.OnClickListener, Rec
                                 String documentId = String.valueOf(shot.get(FirebaseID.documentId));
                                 String title = String.valueOf(shot.get(FirebaseID.title));
                                 String contents = String.valueOf(shot.get(FirebaseID.contents));
-                                Post data = new Post(documentId, title, contents);
+                                String user = String.valueOf(shot.get(FirebaseID.StudentName));
+                                Post data = new Post(documentId, title,user, contents);
                                 mDatas.add(data);
                             }
                         }
@@ -100,6 +100,7 @@ public class FoundFragment extends Fragment implements View.OnClickListener, Rec
     @Override
     public void onItemLongClick(View view, final int position) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+
         dialog.setMessage("삭제 하시겠습니까?");
         dialog.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
             @Override
