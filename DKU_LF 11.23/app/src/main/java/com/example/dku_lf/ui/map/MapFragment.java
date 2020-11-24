@@ -31,9 +31,9 @@ public class MapFragment extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
+            LatLng sydney = new LatLng(37.320803, 127.128207); // 단국대 좌표 입력해놨습니다 ^^7
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16));
         }
     };
 
