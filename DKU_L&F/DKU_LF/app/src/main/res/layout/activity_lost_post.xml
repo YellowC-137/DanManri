@@ -14,24 +14,21 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_margin="16dp"
-        android:textColor="@android:color/black"
-        android:text="Title"/>
+        android:textColor="@android:color/black"/>
     <TextView
         android:id="@+id/post_contents_lost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_margin="8dp"
-        android:textColor="@android:color/black"
-        android:text="contents"/>
+        android:textColor="@android:color/black"/>
     <TextView
         android:id="@+id/post_name_lost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textColor="@android:color/black"
-        android:layout_gravity="end"
-        android:text="User"/>
+        android:layout_gravity="end"/>
 
     <Button
         android:id="@+id/lost_chat_btn"

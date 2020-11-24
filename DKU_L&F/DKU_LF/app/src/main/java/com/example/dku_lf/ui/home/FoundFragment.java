@@ -42,8 +42,6 @@ public class FoundFragment extends HomeFragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         mDatas = new ArrayList<>();
 
         View root = inflater.inflate(R.layout.fragment_found, container, false);
