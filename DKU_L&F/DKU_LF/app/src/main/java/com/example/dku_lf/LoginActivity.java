@@ -51,6 +51,13 @@ public class LoginActivity extends AppCompatActivity {
         Button BtntoReg = (Button)findViewById(R.id.LoginRegBtn);
         progressBar = (ProgressBar)findViewById(R.id.LoginProg);
 
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            UserAppliaction.user_id = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            data();
+            Intent in = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(in);
+        }
+
         BtnLogin.setOnClickListener(new View.OnClickListener() {
 
                                         @Override

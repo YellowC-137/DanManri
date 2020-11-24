@@ -34,12 +34,9 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
 
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
-
     private RecyclerView PostRecyclerView;
-
     private PostAdapter mAdapter;
     private List<Post> mDatas;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,7 +70,7 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
                                 String documentId = String.valueOf(shot.get(FirebaseID.documentId));
                                 String title = String.valueOf(shot.get(FirebaseID.title));
                                 String contents = String.valueOf(shot.get(FirebaseID.contents));
-                                String user = String.valueOf(shot.get(FirebaseID.user));
+                                String user = String.valueOf(shot.get(FirebaseID.StudentName));
                                 Post data = new Post(documentId, title,user, contents);
                                 mDatas.add(data);
                             }
