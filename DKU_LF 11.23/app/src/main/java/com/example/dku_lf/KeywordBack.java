@@ -99,8 +99,6 @@ public class KeywordBack extends Service {
     public void onCreate(){ // 백그라운드 서비스가 처음 실행될 때 한 번만 실행되는 메소드
         super.onCreate();
 
-
-
         Log.w(TAG, "서비스 생성");
 
     }
