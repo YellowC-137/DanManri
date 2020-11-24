@@ -27,7 +27,13 @@
         tools:context="con.example."
 
         />
-
+    <Button
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Locmyloc"
+        android:background="@drawable/ic_baseline_my_location_24"
+    />
 
 
 

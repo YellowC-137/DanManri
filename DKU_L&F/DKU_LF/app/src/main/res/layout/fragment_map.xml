@@ -16,5 +16,14 @@
         android:name="com.google.android.gms.maps.MapFragment"
         />
 
+    <Button
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mapmyloc"
+        android:background="@drawable/ic_baseline_my_location_24"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

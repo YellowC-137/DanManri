@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.dku_lf.R;
+import com.example.dku_lf.ui.home.HomeFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,7 +17,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends HomeFragment {
+    private GoogleMap mMap;
+
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -32,9 +34,11 @@ public class MapFragment extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            mMap = googleMap;
+            LatLng DKU = new LatLng(37.321760, 127.126750);
+            mMap.addMarker(new MarkerOptions().position(DKU).title("단국대학교"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(DKU));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
         }
     };
 

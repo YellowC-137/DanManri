@@ -11,12 +11,14 @@ public class Post {
     private String contents;
     @ServerTimestamp
     private Date date;
+    private String user;
 
     public Post() {
     }
 
-    public Post(String documentId, String title, String contents/*,시간 추가시 사용 Date date*/) {
+    public Post(String documentId, String title,String user, String contents/*,시간 추가시 사용 Date date*/) {
         this.documentId = documentId;
+        this.user = user;
         this.title = title;
         this.contents = contents;
         this.date = date;
@@ -57,10 +59,14 @@ public class Post {
     @Override
     public String toString() {
         return "Post{" +
-                "documentId='" + documentId + '\'' +
-                ", title='" + title + '\'' +
-                ", contents='" + contents + '\'' +
-                ", date=" + date +
-                '}';
+                "documentId='" + documentId + '\'' + ", title='" + title +'\''+ " user :"+ user + '\'' + ", contents='" + contents + '\'' + ", date=" + date + '}';
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

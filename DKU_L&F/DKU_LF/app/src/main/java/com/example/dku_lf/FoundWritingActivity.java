@@ -48,7 +48,7 @@ public class FoundWritingActivity extends AppCompatActivity {
 
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
                     Map<String, Object> data = new HashMap<>();
-                    data.put(FirebaseID.documentId, postId);
+                    data.put(FirebaseID.documentId, mAuth.getCurrentUser().getUid());
                     data.put(FirebaseID.title, fTitle.getText().toString());
                     data.put(FirebaseID.contents, fContents.getText().toString());
                     data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
