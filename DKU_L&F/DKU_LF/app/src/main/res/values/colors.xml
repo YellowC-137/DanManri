@@ -6,4 +6,5 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDivider">#ECECEC</color>
     <color name="colorRegister">#46036FF4</color>
+    <color name="colorCancel">#E4F32D2D</color>
 </resources>

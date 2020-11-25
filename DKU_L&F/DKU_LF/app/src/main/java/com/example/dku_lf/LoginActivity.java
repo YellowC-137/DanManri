@@ -11,26 +11,17 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.database.UserAppliaction;
-import com.example.dku_lf.ui.home.found.FoundPostActivity;
+import com.example.dku_lf.ui.registeration.AuthenticationActivity;
+import com.example.dku_lf.ui.registeration.RegActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.Source;
-import com.squareup.okhttp.internal.DiskLruCache;
-
-import java.util.Arrays;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -115,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         BtntoReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent to_reg = new Intent(LoginActivity.this,RegActivity.class);
+                Intent to_reg = new Intent(LoginActivity.this, AuthenticationActivity.class);
                 startActivity(to_reg);
             }
         });

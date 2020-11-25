@@ -106,7 +106,7 @@ public class KeywordBack extends Service {
 
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId){
+    public int onStartCommand(Intent intent, int flags, final int startId){
 
         Log.w(TAG, "서비스 실행 중...");
 
@@ -130,7 +130,7 @@ public class KeywordBack extends Service {
 
                 if(snapshot.getMetadata().isFromCache() == false){
                     Log.w(TAG, "키워드에 변동이 있었습니다. 서비스를 재시작합니다.");
-                    stopSelf();
+                    stopSelf(startId);
                 }
             }
         }); // 자신의 keyword document가 변동될 경우 String List words에 변경된 키워드를 실시간으로 받는다.
@@ -148,7 +148,7 @@ public class KeywordBack extends Service {
 
                         if(meta.hasPendingWrites() == true){ // 로컬에서 쓰여진 거면 서비스 강제 종료
                             Log.w(TAG, "서비스 종료");
-                            stopSelf();
+                            stopSelf(startId);
                         }
 
                         if( meta.isFromCache() == false && meta.hasPendingWrites() == false){ // 두 번째 실행부터

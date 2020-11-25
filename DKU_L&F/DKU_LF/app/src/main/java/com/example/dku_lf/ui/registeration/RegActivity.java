@@ -1,4 +1,4 @@
-package com.example.dku_lf;
+package com.example.dku_lf.ui.registeration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dku_lf.CameraActivity;
+import com.example.dku_lf.LoginActivity;
+import com.example.dku_lf.R;
 import com.example.dku_lf.database.FirebaseID;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,7 +53,7 @@ public class RegActivity extends AppCompatActivity {
         BtnPh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(RegActivity.this,CameraActivity.class);
+                Intent in = new Intent(RegActivity.this, CameraActivity.class);
                 startActivity(in);
             }
         });
@@ -65,7 +68,7 @@ public class RegActivity extends AppCompatActivity {
                 final String StudentName = StName.getText().toString().trim();
                 final String StudentNum = StNum.getText().toString().trim();
 
-                final Intent a = new Intent(RegActivity.this,LoginActivity.class);
+                final Intent a = new Intent(RegActivity.this, LoginActivity.class);
 
                 if (RegStEmail.isEmpty())
                 {
