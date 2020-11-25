@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dku_lf.CameraActivity;
 import com.example.dku_lf.HomeActivity;
 import com.example.dku_lf.LocationActivity;
 import com.example.dku_lf.R;
@@ -39,8 +38,8 @@ public class LostWritingActivity extends AppCompatActivity {
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
     private EditText Title, Contents;
-    private ImageView uploadImage;
-    private Uri filePath;
+    private ImageView UploadImage;
+    private Uri FilePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,9 @@ public class LostWritingActivity extends AppCompatActivity {
 
         Title = findViewById(R.id.title_edit_lost);
         Contents = findViewById(R.id.contentText_edit_lost);
-        uploadImage = (ImageView) findViewById(R.id.user_upload_image_lost);
+        UploadImage = (ImageView) findViewById(R.id.user_upload_image_lost);
+
+
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +63,9 @@ public class LostWritingActivity extends AppCompatActivity {
                 if(mAuth.getCurrentUser() != null) {
                     // 타이틀이 같아도  생성되도록 함
                     String postId = mStore.collection(FirebaseID.post).document().getId();
-
-                    //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
+                    //이미지 업로드
+                    uploadFile(postId);
+                    //Firebase에서 ID, 타이틀, 내용 String으로 넣음
                     Map<String, Object> data = new HashMap<>();
                     data.put(FirebaseID.documentId, postId);
                     data.put(FirebaseID.title, Title.getText().toString());
@@ -72,8 +74,6 @@ public class LostWritingActivity extends AppCompatActivity {
                     data.put(FirebaseID.StudentName, UserAppliaction.user_name);
                     mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
                 }
-                //게시글 등록과 동시에 이미지 Firebase에 업로드
-                uploadFile();
                 finish();
             }
         });
@@ -106,31 +106,28 @@ public class LostWritingActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
         if(requestCode == 0 && resultCode == RESULT_OK) {
-            filePath = data.getData();
-            Log.d("TAG", "uri:" + String.valueOf(filePath));
+            FilePath = data.getData();
+            Log.d("TAG", "uri:" + String.valueOf(FilePath));
             try {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                uploadImage.setImageBitmap(bitmap);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePath);
+                UploadImage.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void uploadFile() {
-        if (filePath != null) {
+    private void uploadFile(String postId) {
+        if (FilePath != null) {
             //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
-
             //Unique한 파일명을 만들자.
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
-            Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            String filename = postId + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://lostnfound-3024f.appspot.com").child("images/lost/" + filename);
             //올라가거라...
-            storageRef.putFile(filePath);
+            storageRef.putFile(FilePath);
         }
     }
 }

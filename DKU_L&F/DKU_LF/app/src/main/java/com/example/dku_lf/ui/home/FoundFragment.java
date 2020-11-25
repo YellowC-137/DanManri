@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.Map;
 public class FoundFragment extends HomeFragment implements View.OnClickListener, RecyclerViewItemClickListener.OnItemClickListener {
 //게시글 리스트
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://lostnfound-3024f.appspot.com");
 
     private RecyclerView PostRecyclerView;
     private PostAdapter mAdapter;
