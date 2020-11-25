@@ -53,31 +53,7 @@ public class FoundWritingActivity extends AppCompatActivity {
         Contents = findViewById(R.id.contentText_edit_found);
         UploadImage = (ImageView) findViewById(R.id.user_upload_image_found);
 
-        Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent Write = new Intent(FoundWritingActivity.this, HomeActivity.class);
-                if(mAuth.getCurrentUser() != null) {
-                    // 타이틀이 같아도  생성되도록 함
-                    String postId = mStore.collection(FirebaseID.post_found).document().getId();
-
-                    //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
-                    Map<String, Object> data = new HashMap<>();
-                    data.put(FirebaseID.documentId, postId);
-                    data.put(FirebaseID.title, Title.getText().toString());
-                    data.put(FirebaseID.contents, Contents.getText().toString());
-                    data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
-                    data.put(FirebaseID.StudentName, UserAppliaction.user_name);
-                    mStore.collection(FirebaseID.post_found).document(postId).set(data, SetOptions.merge());
-                }
-                //게시글 등록과 동시에 이미지 Firebase에 업로드
-                uploadFile();
-                finish();
-            }
-        });
-
-
-        //사진, 일단은 찍는거고 나중에 사진첨부로 변경해야함!
+        //사진첨부
         PhBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +65,29 @@ public class FoundWritingActivity extends AppCompatActivity {
             }
         });
 
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Write = new Intent(FoundWritingActivity.this, HomeActivity.class);
+                if(mAuth.getCurrentUser() != null) {
+                    // 타이틀이 같아도  생성되도록 함
+                    String postId = mStore.collection(FirebaseID.post_found).document().getId();
+                    //이미지 업로드
+                    uploadFile(postId);
+                    //Firebase에서 ID, 타이틀, 내용 String으로 넣음
+                    Map<String, Object> data = new HashMap<>();
+                    data.put(FirebaseID.documentId, postId);
+                    data.put(FirebaseID.title, Title.getText().toString());
+                    data.put(FirebaseID.contents, Contents.getText().toString());
+                    data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                    data.put(FirebaseID.StudentName, UserAppliaction.user_name);
+                    mStore.collection(FirebaseID.post_found).document(postId).set(data, SetOptions.merge());
+                }
+                finish();
+            }
+        });
+
+
         //지도
         MapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,11 +98,12 @@ public class FoundWritingActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
-        if(requestCode == 0 && resultCode == RESULT_OK){
+        if(requestCode == 0 && resultCode == RESULT_OK) {
             FilePath = data.getData();
             Log.d("TAG", "uri:" + String.valueOf(FilePath));
             try {
@@ -116,19 +116,18 @@ public class FoundWritingActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadFile() {
+
+    private void uploadFile(String postId) {
         if (FilePath != null) {
             //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
-
             //Unique한 파일명을 만들자.
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
-            Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            String filename = postId + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://lostnfound-3024f.appspot.com").child("images/found/" + filename);
             //올라가거라...
             storageRef.putFile(FilePath);
         }
     }
+
 }
