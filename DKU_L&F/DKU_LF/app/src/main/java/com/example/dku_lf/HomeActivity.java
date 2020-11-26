@@ -30,15 +30,6 @@ String Name;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
-        /* 플로팅 버튼 제거
-        FloatingActionButton writeBtn = (FloatingActionButton) findViewById(R.id.writeBtn);
-        writeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(HomeActivity.this,WritingActivity.class);
-                startActivity(in);
-            }
-        });*/
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_notifications, R.id.navigation_map,R.id.navigation_chatlist, R.id.navigation_setting)

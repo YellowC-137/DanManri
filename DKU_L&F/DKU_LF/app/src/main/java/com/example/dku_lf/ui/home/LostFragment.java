@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,8 +26,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +40,7 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
 
     private RecyclerView PostRecyclerView;
     private PostAdapter mAdapter;
+    private ImageView UploadImage;
     private List<Post> mDatas;
 
     @Override
@@ -47,6 +52,7 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
         View root = inflater.inflate(R.layout.fragment_lost, container, false);
 
         PostRecyclerView = root.findViewById(R.id.lost_recyclerview);
+        UploadImage = (ImageView) root.findViewById(R.id.user_upload_image_found);
 
         root.findViewById(R.id.lost_WriteBtn).setOnClickListener(this);
 
@@ -58,6 +64,11 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
     @Override
     public void onStart() {
         super.onStart();
+
+        Date now = new Date();
+        SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd");
+        final String postDay = dayFormat.format(now);
+
         mStore.collection(FirebaseID.post)
                 .orderBy(FirebaseID.timestamp, Query.Direction.DESCENDING)  // 시간순서대로 내림차순
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -71,7 +82,17 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
                                 String title = String.valueOf(shot.get(FirebaseID.title));
                                 String contents = String.valueOf(shot.get(FirebaseID.contents));
                                 String user = String.valueOf(shot.get(FirebaseID.StudentName));
-                                Post data = new Post(documentId, title,user, contents);
+                                String day = String.valueOf(shot.get(FirebaseID.day));
+
+
+                                String time;
+                                if(postDay.equals(day)){
+                                    time = String.valueOf(shot.get(FirebaseID.time));
+                                } else {
+                                    time = String.valueOf(shot.get(FirebaseID.day));
+                                }
+
+                                Post data = new Post(documentId, title,user, contents, time);
                                 mDatas.add(data);
                             }
                         }
@@ -80,7 +101,6 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
                     }
                 });
     }
-
 
 
 

@@ -1,5 +1,6 @@
 package com.example.dku_lf.ui.home.found;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,12 +21,15 @@ import com.example.dku_lf.HomeActivity;
 import com.example.dku_lf.LocationActivity;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.database.UserAppliaction;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -39,7 +45,7 @@ public class FoundWritingActivity extends AppCompatActivity {
     private EditText Title, Contents;
     private ImageView UploadImage;
     private Uri FilePath;
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +55,17 @@ public class FoundWritingActivity extends AppCompatActivity {
         Button MapBtn = (Button)findViewById(R.id.addMapBtn_found);
         Button Submit = (Button)findViewById(R.id.submitBtn_found);
 
+        Date now = new Date();
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd");
+
+        final String time = timeFormat.format(now);
+        final String day = dayFormat.format(now);
+
         Title = findViewById(R.id.title_edit_found);
         Contents = findViewById(R.id.contentText_edit_found);
         UploadImage = (ImageView) findViewById(R.id.user_upload_image_found);
+        progressBar = (ProgressBar)findViewById(R.id.found_writing_Prog);
 
         //사진첨부
         PhBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,11 +79,12 @@ public class FoundWritingActivity extends AppCompatActivity {
             }
         });
 
+        //글 등록
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent Write = new Intent(FoundWritingActivity.this, HomeActivity.class);
-                if(mAuth.getCurrentUser() != null) {
+                if (mAuth.getCurrentUser() != null) {
                     // 타이틀이 같아도  생성되도록 함
                     String postId = mStore.collection(FirebaseID.post_found).document().getId();
                     //이미지 업로드
@@ -80,6 +95,8 @@ public class FoundWritingActivity extends AppCompatActivity {
                     data.put(FirebaseID.title, Title.getText().toString());
                     data.put(FirebaseID.contents, Contents.getText().toString());
                     data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                    data.put(FirebaseID.day, day);
+                    data.put(FirebaseID.time, time);
                     data.put(FirebaseID.StudentName, UserAppliaction.user_name);
                     mStore.collection(FirebaseID.post_found).document(postId).set(data, SetOptions.merge());
                 }
@@ -119,6 +136,7 @@ public class FoundWritingActivity extends AppCompatActivity {
 
     private void uploadFile(String postId) {
         if (FilePath != null) {
+            progressBar.setVisibility(View.VISIBLE);
             //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
             //Unique한 파일명을 만들자.
@@ -129,5 +147,4 @@ public class FoundWritingActivity extends AppCompatActivity {
             storageRef.putFile(FilePath);
         }
     }
-
 }
