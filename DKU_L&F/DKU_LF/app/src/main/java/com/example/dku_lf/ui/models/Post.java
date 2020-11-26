@@ -12,16 +12,18 @@ public class Post {
     @ServerTimestamp
     private Date date;
     private String user;
+    private String time;
 
     public Post() {
     }
 
-    public Post(String documentId, String title,String user, String contents/*,시간 추가시 사용 Date date*/) {
+    public Post(String documentId, String title, String user, String contents, String time) {
         this.documentId = documentId;
-        this.user = user;
         this.title = title;
         this.contents = contents;
         this.date = date;
+        this.user = user;
+        this.time = time;
     }
 
     public String getDocumentId() {
@@ -56,10 +58,24 @@ public class Post {
         this.date = date;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
-                "documentId='" + documentId + '\'' + ", title='" + title +'\''+ " user :"+ user + '\'' + ", contents='" + contents + '\'' + ", date=" + date + '}';
+                "documentId='" + documentId + '\'' +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", date=" + date +
+                ", user='" + user + '\'' +
+                ", time='" + time + '\'' +
+                '}';
     }
 
     public String getUser() {

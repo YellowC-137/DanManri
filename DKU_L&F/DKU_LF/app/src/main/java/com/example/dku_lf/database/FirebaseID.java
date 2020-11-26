@@ -10,12 +10,14 @@ public class FirebaseID {
 
     public static String documentId = "documentID";
     public static String email = "email";
-    public static String password = "password";
+
     public static String notifications = "notifications";
     public static String title = "title";
     public static String contents = "contents";
+
     public static String timestamp = "timestamp";
-    public static String uri = "uri";
+    public static String day = "day";
+    public static String time = "time";
 
     public static String keyword = "keyword";
     public static String words = "words";

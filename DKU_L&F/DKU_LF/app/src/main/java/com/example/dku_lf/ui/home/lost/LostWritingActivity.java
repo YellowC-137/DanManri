@@ -50,11 +50,28 @@ public class LostWritingActivity extends AppCompatActivity {
         Button MapBtn = (Button)findViewById(R.id.addMapBtn_lost);
         Button Submit = (Button)findViewById(R.id.submitBtn_lost);
 
+        Date now = new Date();
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd");
+
+        final String time = timeFormat.format(now);
+        final String day = dayFormat.format(now);
+
         Title = findViewById(R.id.title_edit_lost);
         Contents = findViewById(R.id.contentText_edit_lost);
         UploadImage = (ImageView) findViewById(R.id.user_upload_image_lost);
 
-
+        //사진첨부
+        PhBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //이미지를 선택
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "이미지를 선택하세요."), 0);
+            }
+        });
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +88,8 @@ public class LostWritingActivity extends AppCompatActivity {
                     data.put(FirebaseID.title, Title.getText().toString());
                     data.put(FirebaseID.contents, Contents.getText().toString());
                     data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                    data.put(FirebaseID.day, day);
+                    data.put(FirebaseID.time, time);
                     data.put(FirebaseID.StudentName, UserAppliaction.user_name);
                     mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
                 }
@@ -79,17 +98,6 @@ public class LostWritingActivity extends AppCompatActivity {
         });
 
 
-        //사진, 일단은 찍는거고 나중에 사진첨부로 변경해야함!
-        PhBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //이미지를 선택
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "이미지를 선택하세요."), 0);
-            }
-        });
 
         //지도
         MapBtn.setOnClickListener(new View.OnClickListener() {
