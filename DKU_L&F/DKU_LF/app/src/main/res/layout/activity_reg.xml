@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#23036FF4"
@@ -19,8 +20,9 @@
             <TextView
                 android:id="@+id/RegText"
                 android:layout_width="match_parent"
-                android:layout_height="158dp"
+                android:layout_height="160dp"
                 android:gravity="center"
+                android:padding="25sp"
                 android:text="Registeration"
                 android:textSize="20sp" />
 
@@ -38,15 +40,14 @@
                 android:id="@+id/RegEmail"
                 android:layout_width="match_parent"
                 android:layout_height="39dp"
-                android:background="@drawable/rounded_edittext"
-                android:inputType="textEmailAddress"
-                android:textSize="15sp"
-                android:hint="단국대 이메일을 입력해주세요"
-                android:maxLength="30"
                 android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/unselect_rounded_edittext"
+                android:textColor="#4C4C4C"
+                android:textSize="15sp"
+                tools:text="example@dankook.ac.kr"/>
 
             <TextView
                 android:id="@+id/PassText"
@@ -112,11 +113,11 @@
                 android:layout_height="39dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/rounded_edittext"
-                android:hint="이름을 입력해주세요"
-                android:maxLength="10"
-                android:textSize="15sp" />
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/unselect_rounded_edittext"
+                android:textColor="#4C4C4C"
+                android:textSize="15sp"
+                tools:text="홍길동"/>
 
             <TextView
                 android:id="@+id/NumText"
@@ -134,11 +135,11 @@
                 android:layout_height="39dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/rounded_edittext"
-                android:hint="학번 8자리를 입력해주세요"
-                android:maxLength="8"
-                android:textSize="15sp" />
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/unselect_rounded_edittext"
+                android:textColor="#4C4C4C"
+                android:textSize="15sp"
+                tools:text="00000000" />
 
             <Button
                 android:id="@+id/RegButton"

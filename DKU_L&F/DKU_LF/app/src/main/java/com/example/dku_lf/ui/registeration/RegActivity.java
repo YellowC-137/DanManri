@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dku_lf.CameraActivity;
@@ -29,7 +30,8 @@ import java.util.Map;
 
 public class RegActivity extends AppCompatActivity {
     private static final String TAG = "RegActivity";
-    EditText RegEtID,RegEtPW, RegEtPwCon, StName, StNum;
+    EditText RegEtPW, RegEtPwCon;
+    TextView RegEtID, StName, StNum;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
@@ -41,13 +43,19 @@ public class RegActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        RegEtID = (EditText)findViewById(R.id.RegEmail);
+        RegEtID = (TextView)findViewById(R.id.RegEmail);
         RegEtPW = (EditText)findViewById(R.id.RegPw);
         RegEtPwCon = (EditText)findViewById(R.id.PassConfirm);
-        StName = (EditText)findViewById(R.id.StudentName);
-        StNum = (EditText)findViewById(R.id.StudentNum);
+        StName = (TextView) findViewById(R.id.StudentName);
+        StNum = (TextView) findViewById(R.id.StudentNum);
 
         Button BtnPh = (Button)findViewById(R.id.RegPhoto);
+
+        Intent intent = getIntent();
+        RegEtID.setText(intent.getStringExtra("email"));
+        StName.setText(intent.getStringExtra("studentName"));
+        StNum.setText(intent.getStringExtra("studentNum"));
+
 
 
         BtnPh.setOnClickListener(new View.OnClickListener() {

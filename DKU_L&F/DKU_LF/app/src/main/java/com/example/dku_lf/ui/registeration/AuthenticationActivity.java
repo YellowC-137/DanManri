@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.StringTokenizer;
+
 public class AuthenticationActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private CardView reset_button, start_button;
@@ -37,11 +39,9 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Registeration");
         setContentView(R.layout.activity_authentication);
 
         reset_button = (CardView)findViewById(R.id.reset_card);
-        start_button = (CardView)findViewById(R.id.start_card);
 
         reset_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +50,7 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
                 startActivity(intent);
             }
         });
+
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -63,6 +64,7 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
 
         auth = FirebaseAuth.getInstance();
 
+        start_button = (CardView)findViewById(R.id.start_card);
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,27 +81,38 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
         if(requestCode == REQ_SIGN_GOOGLE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
-            if(result.isSuccess() == true){ // 인증 결과가 성공적이면
+            if(result.isSuccess()){ // 인증 결과가 성공적이면
                 GoogleSignInAccount account = result.getSignInAccount();
-                Toast.makeText(this, "인증에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                requestLogin(account);
+                String email = account.getEmail();
+
+                StringTokenizer Etoken = new StringTokenizer(email, "@");
+
+                String studentNum = Etoken.nextToken();
+                String emailform = Etoken.nextToken();
+
+                Log.w("Email : ", emailform);
+                Log.w("학번 : ", studentNum);
+
+                if(emailform.equals("dankook.ac.kr")){
+                    Toast.makeText(this, "단국대 학생 인증되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), RegActivity.class);
+                    intent.putExtra("email", email);
+                    intent.putExtra("studentName", account.getDisplayName());
+                    intent.putExtra("studentNum", studentNum);
+                    Auth.GoogleSignInApi.signOut(googleApiClient);
+                    startActivity(intent);
+                }
+
+                else{
+                    Toast.makeText(this, "단국대 이메일이 아닙니다!", Toast.LENGTH_SHORT).show();
+                    Auth.GoogleSignInApi.signOut(googleApiClient); // 단국대 이메일이 아니면 로그아웃
+                }
+
             }
 
         }
     }
 
-    private void requestLogin(GoogleSignInAccount account) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                            Toast.makeText(AuthenticationActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-    }
 
 
     @Override
