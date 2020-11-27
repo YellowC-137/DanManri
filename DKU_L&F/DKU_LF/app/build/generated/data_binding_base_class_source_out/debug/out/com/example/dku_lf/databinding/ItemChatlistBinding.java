@@ -19,12 +19,21 @@ public final class ItemChatlistBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final TextView itemChatlistTextview;
+  public final TextView chatitemTextviewTimestamp;
+
+  @NonNull
+  public final TextView chatlistLastmessage;
+
+  @NonNull
+  public final TextView itemChatlistTitle;
 
   private ItemChatlistBinding(@NonNull LinearLayout rootView,
-      @NonNull TextView itemChatlistTextview) {
+      @NonNull TextView chatitemTextviewTimestamp, @NonNull TextView chatlistLastmessage,
+      @NonNull TextView itemChatlistTitle) {
     this.rootView = rootView;
-    this.itemChatlistTextview = itemChatlistTextview;
+    this.chatitemTextviewTimestamp = chatitemTextviewTimestamp;
+    this.chatlistLastmessage = chatlistLastmessage;
+    this.itemChatlistTitle = itemChatlistTitle;
   }
 
   @Override
@@ -54,13 +63,26 @@ public final class ItemChatlistBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.item_chatlist_textview;
-      TextView itemChatlistTextview = rootView.findViewById(id);
-      if (itemChatlistTextview == null) {
+      id = R.id.chatitem_textview_timestamp;
+      TextView chatitemTextviewTimestamp = rootView.findViewById(id);
+      if (chatitemTextviewTimestamp == null) {
         break missingId;
       }
 
-      return new ItemChatlistBinding((LinearLayout) rootView, itemChatlistTextview);
+      id = R.id.chatlist_lastmessage;
+      TextView chatlistLastmessage = rootView.findViewById(id);
+      if (chatlistLastmessage == null) {
+        break missingId;
+      }
+
+      id = R.id.item_chatlist_title;
+      TextView itemChatlistTitle = rootView.findViewById(id);
+      if (itemChatlistTitle == null) {
+        break missingId;
+      }
+
+      return new ItemChatlistBinding((LinearLayout) rootView, chatitemTextviewTimestamp,
+          chatlistLastmessage, itemChatlistTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

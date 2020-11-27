@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -31,14 +32,18 @@ public final class ActivityLostPostBinding implements ViewBinding {
   @NonNull
   public final TextView postTitleLost;
 
+  @NonNull
+  public final ImageView uploadedImageLost;
+
   private ActivityLostPostBinding(@NonNull LinearLayout rootView, @NonNull Button lostChatBtn,
       @NonNull TextView postContentsLost, @NonNull TextView postNameLost,
-      @NonNull TextView postTitleLost) {
+      @NonNull TextView postTitleLost, @NonNull ImageView uploadedImageLost) {
     this.rootView = rootView;
     this.lostChatBtn = lostChatBtn;
     this.postContentsLost = postContentsLost;
     this.postNameLost = postNameLost;
     this.postTitleLost = postTitleLost;
+    this.uploadedImageLost = uploadedImageLost;
   }
 
   @Override
@@ -92,8 +97,14 @@ public final class ActivityLostPostBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.uploaded_image_lost;
+      ImageView uploadedImageLost = rootView.findViewById(id);
+      if (uploadedImageLost == null) {
+        break missingId;
+      }
+
       return new ActivityLostPostBinding((LinearLayout) rootView, lostChatBtn, postContentsLost,
-          postNameLost, postTitleLost);
+          postNameLost, postTitleLost, uploadedImageLost);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

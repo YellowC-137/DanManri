@@ -4,6 +4,7 @@ package com.example.dku_lf.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,17 +23,26 @@ public final class ItemPostBinding implements ViewBinding {
   public final TextView itemPostContents;
 
   @NonNull
+  public final TextView itemPostTime;
+
+  @NonNull
   public final TextView itemPostTitle;
 
   @NonNull
   public final TextView itemPostUser;
 
+  @NonNull
+  public final ImageView postImage;
+
   private ItemPostBinding(@NonNull CardView rootView, @NonNull TextView itemPostContents,
-      @NonNull TextView itemPostTitle, @NonNull TextView itemPostUser) {
+      @NonNull TextView itemPostTime, @NonNull TextView itemPostTitle,
+      @NonNull TextView itemPostUser, @NonNull ImageView postImage) {
     this.rootView = rootView;
     this.itemPostContents = itemPostContents;
+    this.itemPostTime = itemPostTime;
     this.itemPostTitle = itemPostTitle;
     this.itemPostUser = itemPostUser;
+    this.postImage = postImage;
   }
 
   @Override
@@ -68,6 +78,12 @@ public final class ItemPostBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.item_post_time;
+      TextView itemPostTime = rootView.findViewById(id);
+      if (itemPostTime == null) {
+        break missingId;
+      }
+
       id = R.id.item_post_title;
       TextView itemPostTitle = rootView.findViewById(id);
       if (itemPostTitle == null) {
@@ -80,8 +96,14 @@ public final class ItemPostBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemPostBinding((CardView) rootView, itemPostContents, itemPostTitle,
-          itemPostUser);
+      id = R.id.post_image;
+      ImageView postImage = rootView.findViewById(id);
+      if (postImage == null) {
+        break missingId;
+      }
+
+      return new ItemPostBinding((CardView) rootView, itemPostContents, itemPostTime, itemPostTitle,
+          itemPostUser, postImage);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

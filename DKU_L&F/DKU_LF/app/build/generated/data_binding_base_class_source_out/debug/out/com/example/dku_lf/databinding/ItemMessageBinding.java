@@ -28,15 +28,19 @@ public final class ItemMessageBinding implements ViewBinding {
   public final TextView messageItemName;
 
   @NonNull
+  public final TextView messageItemTextviewTimestamp;
+
+  @NonNull
   public final LinearLayout messageLinearMain;
 
   private ItemMessageBinding(@NonNull LinearLayout rootView, @NonNull TextView messageItem,
       @NonNull LinearLayout messageItemLinear, @NonNull TextView messageItemName,
-      @NonNull LinearLayout messageLinearMain) {
+      @NonNull TextView messageItemTextviewTimestamp, @NonNull LinearLayout messageLinearMain) {
     this.rootView = rootView;
     this.messageItem = messageItem;
     this.messageItemLinear = messageItemLinear;
     this.messageItemName = messageItemName;
+    this.messageItemTextviewTimestamp = messageItemTextviewTimestamp;
     this.messageLinearMain = messageLinearMain;
   }
 
@@ -85,10 +89,16 @@ public final class ItemMessageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.messageItem_textview_timestamp;
+      TextView messageItemTextviewTimestamp = rootView.findViewById(id);
+      if (messageItemTextviewTimestamp == null) {
+        break missingId;
+      }
+
       LinearLayout messageLinearMain = (LinearLayout) rootView;
 
       return new ItemMessageBinding((LinearLayout) rootView, messageItem, messageItemLinear,
-          messageItemName, messageLinearMain);
+          messageItemName, messageItemTextviewTimestamp, messageLinearMain);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

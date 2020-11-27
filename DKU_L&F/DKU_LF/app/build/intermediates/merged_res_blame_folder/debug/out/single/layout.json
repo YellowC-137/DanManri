@@ -44,10 +44,6 @@
         "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_reg.xml"
     },
     {
-        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_writing.xml",
-        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_writing.xml"
-    },
-    {
         "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
         "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },

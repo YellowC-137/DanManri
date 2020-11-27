@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,21 +31,30 @@ public final class ActivityFoundWritingBinding implements ViewBinding {
   public final EditText contentTextEditFound;
 
   @NonNull
+  public final ProgressBar foundWritingProg;
+
+  @NonNull
   public final Button submitBtnFound;
 
   @NonNull
   public final EditText titleEditFound;
 
+  @NonNull
+  public final ImageView userUploadImageFound;
+
   private ActivityFoundWritingBinding(@NonNull RelativeLayout rootView,
       @NonNull Button addMapBtnFound, @NonNull Button addPhotoBtnFound,
-      @NonNull EditText contentTextEditFound, @NonNull Button submitBtnFound,
-      @NonNull EditText titleEditFound) {
+      @NonNull EditText contentTextEditFound, @NonNull ProgressBar foundWritingProg,
+      @NonNull Button submitBtnFound, @NonNull EditText titleEditFound,
+      @NonNull ImageView userUploadImageFound) {
     this.rootView = rootView;
     this.addMapBtnFound = addMapBtnFound;
     this.addPhotoBtnFound = addPhotoBtnFound;
     this.contentTextEditFound = contentTextEditFound;
+    this.foundWritingProg = foundWritingProg;
     this.submitBtnFound = submitBtnFound;
     this.titleEditFound = titleEditFound;
+    this.userUploadImageFound = userUploadImageFound;
   }
 
   @Override
@@ -91,6 +102,12 @@ public final class ActivityFoundWritingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.found_writing_Prog;
+      ProgressBar foundWritingProg = rootView.findViewById(id);
+      if (foundWritingProg == null) {
+        break missingId;
+      }
+
       id = R.id.submitBtn_found;
       Button submitBtnFound = rootView.findViewById(id);
       if (submitBtnFound == null) {
@@ -103,8 +120,15 @@ public final class ActivityFoundWritingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.user_upload_image_found;
+      ImageView userUploadImageFound = rootView.findViewById(id);
+      if (userUploadImageFound == null) {
+        break missingId;
+      }
+
       return new ActivityFoundWritingBinding((RelativeLayout) rootView, addMapBtnFound,
-          addPhotoBtnFound, contentTextEditFound, submitBtnFound, titleEditFound);
+          addPhotoBtnFound, contentTextEditFound, foundWritingProg, submitBtnFound, titleEditFound,
+          userUploadImageFound);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

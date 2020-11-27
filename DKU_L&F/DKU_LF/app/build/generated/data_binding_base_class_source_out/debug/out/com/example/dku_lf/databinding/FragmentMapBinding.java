@@ -4,10 +4,9 @@ package com.example.dku_lf.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.dku_lf.R;
 import com.google.android.gms.maps.MapView;
@@ -17,28 +16,19 @@ import java.lang.String;
 
 public final class FragmentMapBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
-  public final MapView map;
+  public final MapView MapView;
 
-  @NonNull
-  public final ConstraintLayout map1;
-
-  @NonNull
-  public final Button mapmyloc;
-
-  private FragmentMapBinding(@NonNull ConstraintLayout rootView, @NonNull MapView map,
-      @NonNull ConstraintLayout map1, @NonNull Button mapmyloc) {
+  private FragmentMapBinding(@NonNull RelativeLayout rootView, @NonNull MapView MapView) {
     this.rootView = rootView;
-    this.map = map;
-    this.map1 = map1;
-    this.mapmyloc = mapmyloc;
+    this.MapView = MapView;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -63,25 +53,13 @@ public final class FragmentMapBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.map;
-      MapView map = rootView.findViewById(id);
-      if (map == null) {
+      id = R.id.Map_view;
+      MapView MapView = rootView.findViewById(id);
+      if (MapView == null) {
         break missingId;
       }
 
-      id = R.id.map;
-      ConstraintLayout map1 = rootView.findViewById(id);
-      if (map1 == null) {
-        break missingId;
-      }
-
-      id = R.id.mapmyloc;
-      Button mapmyloc = rootView.findViewById(id);
-      if (mapmyloc == null) {
-        break missingId;
-      }
-
-      return new FragmentMapBinding((ConstraintLayout) rootView, map, map1, mapmyloc);
+      return new FragmentMapBinding((RelativeLayout) rootView, MapView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

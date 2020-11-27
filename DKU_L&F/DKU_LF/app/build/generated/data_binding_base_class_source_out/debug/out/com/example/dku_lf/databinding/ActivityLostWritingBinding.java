@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,16 +35,20 @@ public final class ActivityLostWritingBinding implements ViewBinding {
   @NonNull
   public final EditText titleEditLost;
 
+  @NonNull
+  public final ImageView userUploadImageLost;
+
   private ActivityLostWritingBinding(@NonNull RelativeLayout rootView,
       @NonNull Button addMapBtnLost, @NonNull Button addPhotoBtnLost,
       @NonNull EditText contentTextEditLost, @NonNull Button submitBtnLost,
-      @NonNull EditText titleEditLost) {
+      @NonNull EditText titleEditLost, @NonNull ImageView userUploadImageLost) {
     this.rootView = rootView;
     this.addMapBtnLost = addMapBtnLost;
     this.addPhotoBtnLost = addPhotoBtnLost;
     this.contentTextEditLost = contentTextEditLost;
     this.submitBtnLost = submitBtnLost;
     this.titleEditLost = titleEditLost;
+    this.userUploadImageLost = userUploadImageLost;
   }
 
   @Override
@@ -103,8 +108,14 @@ public final class ActivityLostWritingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.user_upload_image_lost;
+      ImageView userUploadImageLost = rootView.findViewById(id);
+      if (userUploadImageLost == null) {
+        break missingId;
+      }
+
       return new ActivityLostWritingBinding((RelativeLayout) rootView, addMapBtnLost,
-          addPhotoBtnLost, contentTextEditLost, submitBtnLost, titleEditLost);
+          addPhotoBtnLost, contentTextEditLost, submitBtnLost, titleEditLost, userUploadImageLost);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

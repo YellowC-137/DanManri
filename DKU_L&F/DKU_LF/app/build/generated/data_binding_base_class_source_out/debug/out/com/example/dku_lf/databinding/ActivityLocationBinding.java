@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.example.dku_lf.R;
 import java.lang.NullPointerException;
@@ -16,28 +16,19 @@ import java.lang.String;
 
 public final class ActivityLocationBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button LocBtn;
+  public final Button mapmyloc;
 
-  @NonNull
-  public final FrameLayout Locmap;
-
-  @NonNull
-  public final Button Locmyloc;
-
-  private ActivityLocationBinding(@NonNull FrameLayout rootView, @NonNull Button LocBtn,
-      @NonNull FrameLayout Locmap, @NonNull Button Locmyloc) {
+  private ActivityLocationBinding(@NonNull ConstraintLayout rootView, @NonNull Button mapmyloc) {
     this.rootView = rootView;
-    this.LocBtn = LocBtn;
-    this.Locmap = Locmap;
-    this.Locmyloc = Locmyloc;
+    this.mapmyloc = mapmyloc;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -62,21 +53,13 @@ public final class ActivityLocationBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.LocBtn;
-      Button LocBtn = rootView.findViewById(id);
-      if (LocBtn == null) {
+      id = R.id.mapmyloc;
+      Button mapmyloc = rootView.findViewById(id);
+      if (mapmyloc == null) {
         break missingId;
       }
 
-      FrameLayout Locmap = (FrameLayout) rootView;
-
-      id = R.id.Locmyloc;
-      Button Locmyloc = rootView.findViewById(id);
-      if (Locmyloc == null) {
-        break missingId;
-      }
-
-      return new ActivityLocationBinding((FrameLayout) rootView, LocBtn, Locmap, Locmyloc);
+      return new ActivityLocationBinding((ConstraintLayout) rootView, mapmyloc);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
