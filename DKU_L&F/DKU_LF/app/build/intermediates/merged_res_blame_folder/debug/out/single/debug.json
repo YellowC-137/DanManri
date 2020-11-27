@@ -1,0 +1,294 @@
+[
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_post.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\item_post.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_splashicon.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-mdpi\\splashicon.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_chatlist.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_chatlist.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_location.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_location.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_reg.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_reg.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_rounded_edittext.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\rounded_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\xml_root_preferences.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\xml\\root_preferences.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_keyword.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_keyword.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_photo_camera_24.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_baseline_photo_camera_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_splashicon.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xhdpi\\splashicon.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_setting.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_setting.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_button_shape1.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\button_shape1.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_splashicon_foreground.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xhdpi\\splashicon_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_splashicon_background.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\splashicon_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_splashicon_round.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxxhdpi\\splashicon_round.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_splashicon_round.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-anydpi-v26\\splashicon_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_splashicon_foreground.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxxhdpi\\splashicon_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_splashicon_round.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xhdpi\\splashicon_round.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_notifications.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mychatbubble.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\mychatbubble.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_edit_24.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_baseline_edit_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_notification.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\item_notification.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_map_24.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_baseline_map_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_message_24.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_baseline_message_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\xml_default_config.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\xml\\default_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_found_post.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_found_post.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_splashicon.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-anydpi-v26\\splashicon.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_splashicon_round.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-mdpi\\splashicon_round.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_found.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_found.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_message.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_message.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_lost.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_lost.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_splashicon_foreground.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-hdpi\\splashicon_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_camera.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_chatlist.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\item_chatlist.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_camera2_basic.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_camera2_basic.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chatbubble.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\chatbubble.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_splashicon_foreground.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-mdpi\\splashicon_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splashicon_foreground.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxhdpi\\splashicon_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_background.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\icon_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lost_post.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_lost_post.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_my_location_24.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_baseline_my_location_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lost_writing.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_lost_writing.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_home_black_24dp.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splashicon.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxhdpi\\splashicon.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_map.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\fragment_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_splashicon_round.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-hdpi\\splashicon_round.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_splash_icon.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\splash_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\navigation_mobile_navigation.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\navigation\\mobile_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_button_shape2_blue.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\button_shape2_blue.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_writing.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_writing.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_signup_image.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable-v24\\signup_image.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_keyword.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\item_keyword.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_found_writing.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\activity_found_writing.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_settings_24.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\ic_baseline_settings_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splashicon_round.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxhdpi\\splashicon_round.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_splashicon.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxxhdpi\\splashicon.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_message.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\layout\\item_message.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_setting_shape.xml.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\drawable\\setting_shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_splashicon.png.flat",
+        "source": "C:\\Users\\zdrgn\\AndroidStudioProjects\\DKU_LF chat\\app\\src\\main\\res\\mipmap-hdpi\\splashicon.png"
+    }
+]
