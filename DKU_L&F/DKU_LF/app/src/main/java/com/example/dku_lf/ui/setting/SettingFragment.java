@@ -24,6 +24,8 @@ import com.example.dku_lf.LoginActivity;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.chat.MessageActivity;
 import com.example.dku_lf.ui.home.HomeFragment;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -123,7 +125,7 @@ public class SettingFragment extends HomeFragment {
                                     }
                                 });
 
-                        mAuth.getCurrentUser().delete();
+                        FirebaseAuth.getInstance().getCurrentUser().delete();
                         dialog.dismiss();
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);

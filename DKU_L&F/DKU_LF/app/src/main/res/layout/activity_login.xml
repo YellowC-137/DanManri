@@ -7,6 +7,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:src="@drawable/splash_icon"
@@ -31,52 +32,38 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
-    <EditText
-        android:id="@+id/LoginEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="이메일을 입력해주세요"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@id/LoginText"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/LoginPw"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="비밀번호를 입력해주세요"
-        android:inputType="textPassword"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@id/LoginEmail"
-        />
-
     <Button
         android:id="@+id/LoginSignBtn"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="70dp"
+        android:background="@color/colorAccent"
+        android:drawableStart="@drawable/fui_ic_googleg_color_24dp"
+        android:drawablePadding="10dp"
+        android:padding="15dp"
+        android:shadowColor="@color/colorDivider"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="10"
+        android:text="Login With Dankook G-mail"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="로그인"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@id/LoginPw"
-        />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginText" />
 
-    <Button
+    <TextView
         android:id="@+id/LoginRegBtn"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="회원가입"
         android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="로그인이 처음이신가요?"
+        android:textColor="#0158A6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LoginSignBtn"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginSignBtn"
+        app:layout_constraintVertical_bias="0.041" />
 
     <ProgressBar
         android:layout_width="wrap_content"
