@@ -24,8 +24,12 @@ import com.example.dku_lf.LoginActivity;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.chat.MessageActivity;
 import com.example.dku_lf.ui.home.HomeFragment;
+import com.example.dku_lf.ui.register.AuthenticationActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,8 +38,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import static android.content.ContentValues.TAG;
 
 
-public class SettingFragment extends HomeFragment {
+public class SettingFragment extends HomeFragment implements GoogleApiClient.OnConnectionFailedListener {
 
+    private FirebaseAuth auth;
+    private GoogleApiClient googleApiClient;
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +58,16 @@ public class SettingFragment extends HomeFragment {
         Button logout = (Button) root.findViewById(R.id.logout_button);
         Button leave  = (Button) root.findViewById(R.id.leave_button);
 
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(getActivity())
+                .enableAutoManage(getActivity(), this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+                .build();
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +78,7 @@ public class SettingFragment extends HomeFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
+                        Auth.GoogleSignInApi.signOut(googleApiClient);
                         dialog.dismiss();
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -126,6 +143,7 @@ public class SettingFragment extends HomeFragment {
                                 });
 
                         FirebaseAuth.getInstance().getCurrentUser().delete();
+                        Auth.GoogleSignInApi.signOut(googleApiClient);
                         dialog.dismiss();
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -151,5 +169,10 @@ public class SettingFragment extends HomeFragment {
 
 
         return root;
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }

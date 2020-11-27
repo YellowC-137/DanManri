@@ -92,7 +92,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                         @Override
                                         public void onClick(View v) {
                                             Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                                            progressBar.setVisibility(View.VISIBLE);
                                             startActivityForResult(intent, REQ_SIGN_GOOGLE);
 
                                                 }
@@ -114,10 +113,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // 구글 로그인 인증을 요청했을 때 결과 값을 돌려 받는 곳
         super.onActivityResult(requestCode, resultCode, data);
 
+
+        progressBar.setVisibility(View.VISIBLE);
+
         if(requestCode == REQ_SIGN_GOOGLE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
+
+            progressBar.setVisibility(View.GONE);
+
             if(result.isSuccess()){ // 인증 결과가 성공적이면
+
+                progressBar.setVisibility(View.VISIBLE);
                 GoogleSignInAccount account = result.getSignInAccount();
                 resultLogin(account);
                 return;
@@ -159,10 +166,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                     mStore.collection(FirebaseID.user).document(user.getEmail()).set(userMap, SetOptions.merge());
 
                                     List<String> words = new ArrayList<>();
+                                    words.add("First-message");
+
                                     Map<String, Object> keyMap = new HashMap<>();
                                     keyMap.put(FirebaseID.words, words);
 
                                     FirebaseFirestore.getInstance().collection(FirebaseID.keyword).document(account.getEmail()).set(keyMap);
+
+
                                     progressBar.setVisibility(View.GONE);
                                     startActivity(intent);
                                 }

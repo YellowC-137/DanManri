@@ -45,7 +45,11 @@ public class KeywordActivity extends AppCompatActivity {
     private ActivityKeywordBinding binding;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Keyword Notification");
@@ -106,7 +110,6 @@ public class KeywordActivity extends AppCompatActivity {
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
 
                     Map<String, Object> data = new HashMap<>();
-                    data.put(FirebaseID.email, email);
                     lStore.collection(FirebaseID.keyword).document(email).set(data, SetOptions.merge()); // collection 및 document 생성
                     keyref.update(FirebaseID.words, FieldValue.arrayUnion(key_set.getText().toString())); // 새로운 값이면 배열에 추가
                     Toast.makeText(getApplicationContext(), "[" + key_set.getText().toString() +"] 키워드가 등록되었습니다.", Toast.LENGTH_SHORT);
