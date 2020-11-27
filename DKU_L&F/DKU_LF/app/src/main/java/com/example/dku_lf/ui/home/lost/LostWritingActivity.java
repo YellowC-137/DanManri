@@ -79,7 +79,7 @@ public class LostWritingActivity extends AppCompatActivity {
                 Intent Write = new Intent(LostWritingActivity.this, HomeActivity.class);
                 if(mAuth.getCurrentUser() != null) {
                     // 타이틀이 같아도  생성되도록 함
-
+                    uploadFile(postId);
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
                     Map<String, Object> data = new HashMap<>();
                     data.put(FirebaseID.UID,FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -92,7 +92,7 @@ public class LostWritingActivity extends AppCompatActivity {
                     data.put(FirebaseID.StudentName, postname);
                     mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
                 }
-                startActivity(Write);
+                finish();
             }
         });
 

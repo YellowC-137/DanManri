@@ -91,6 +91,7 @@ public class FoundWritingActivity extends AppCompatActivity {
                     // 타이틀이 같아도  생성되도록 함
                     String postId = mStore.collection(FirebaseID.post_found).document().getId();
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
+                    uploadFile(postId);
                     Map<String, Object> data = new HashMap<>();
                     data.put(FirebaseID.UID,FirebaseAuth.getInstance().getCurrentUser().getUid());
                     data.put(FirebaseID.documentId, postId);
@@ -105,7 +106,7 @@ public class FoundWritingActivity extends AppCompatActivity {
 
                     mStore.collection(FirebaseID.post_found).document(postId).set(data, SetOptions.merge());
                 }
-                startActivity(Write);
+                finish();
             }
         });
 
@@ -132,7 +133,7 @@ public class FoundWritingActivity extends AppCompatActivity {
                 Location.putExtra("postname",postname);
                 Location.putExtra("postuid",postId);//게시글 id
                 Log.d(TAG,"으앙 지도"+postname);
-                startActivityForResult(Location,REQUSET);
+                startActivity(Location);
             }
         });
     }

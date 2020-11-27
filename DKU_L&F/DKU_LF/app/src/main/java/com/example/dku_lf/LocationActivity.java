@@ -160,14 +160,6 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
                 mStore.collection("Post_locations").document(postid).set(locatonInfo, SetOptions.merge());
                 UserAppliaction.user_name=postname;
 
-                if (posttype=="lost")
-                {
-
-                }
-                if (posttype=="found")
-                {
-
-                }
                 finish();
             }
         });
