@@ -11,10 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.dku_lf.R;
-import com.example.dku_lf.adapters.PostAdapter;
+import com.example.dku_lf.adapters.LostPostAdapter;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.home.lost.LostPostActivity;
 import com.example.dku_lf.ui.home.lost.LostWritingActivity;
@@ -26,7 +25,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
     private RecyclerView PostRecyclerView;
-    private PostAdapter mAdapter;
+    private LostPostAdapter mAdapter;
     private ImageView UploadImage;
     private List<Post> mDatas;
 
@@ -96,7 +94,7 @@ public class LostFragment extends HomeFragment implements View.OnClickListener, 
                                 mDatas.add(data);
                             }
                         }
-                        mAdapter = new PostAdapter(mDatas);
+                        mAdapter = new LostPostAdapter(mDatas);
                         PostRecyclerView.setAdapter(mAdapter);
                     }
                 });
