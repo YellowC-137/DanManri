@@ -1,5 +1,7 @@
 package com.example.dku_lf;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,6 +63,31 @@ String Name;
         NavigationUI.setupWithNavController(navView, navController);
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ad = new AlertDialog.Builder(this);
+        ad.setMessage("어플을 종료하시겠습니까?");
+        ad.setIcon(R.mipmap.splashicon);
+        ad.setTitle("단만리");
+
+
+        ad.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
+        });
+        ad.show();
     }
 
 
