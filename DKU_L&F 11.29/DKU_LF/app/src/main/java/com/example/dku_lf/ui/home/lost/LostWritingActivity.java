@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -55,6 +57,7 @@ public class LostWritingActivity extends AppCompatActivity {
         Button PhBtn = (Button)findViewById(R.id.addPhotoBtn_lost);
         Button MapBtn = (Button)findViewById(R.id.addMapBtn_lost);
         Button Submit = (Button)findViewById(R.id.submitBtn_lost);
+        final LinearLayout show_progress = (LinearLayout)findViewById(R.id.RegLay);
 
         Date now = new Date();
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -75,24 +78,55 @@ public class LostWritingActivity extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                show_progress.setVisibility(View.VISIBLE);
                 posttitle = Title.getText().toString();
                 Intent Write = new Intent(LostWritingActivity.this, HomeActivity.class);
                 if(mAuth.getCurrentUser() != null) {
                     // 타이틀이 같아도  생성되도록 함
-                    uploadFile(postId);
-                    //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
-                    Map<String, Object> data = new HashMap<>();
-                    data.put(FirebaseID.UID,FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    data.put(FirebaseID.documentId, postId);
-                    data.put(FirebaseID.title, posttitle);
-                    data.put(FirebaseID.contents, Contents.getText().toString());
-                    data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
-                    data.put(FirebaseID.day, day);
-                    data.put(FirebaseID.time, time);
-                    data.put(FirebaseID.StudentName, postname);
-                    mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
+                    if (FilePath != null) {
+                        //storage
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
+                        //Unique한 파일명을 만들자.
+                        String filename = postId + ".png";
+                        //storage 주소와 폴더 파일명을 지정해 준다.
+                        StorageReference storageRef = storage.getReferenceFromUrl("gs://lostnfound-3024f.appspot.com").child("images/lost/" + filename);
+                        //올라가거라...
+                        storageRef.putFile(FilePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
+                                Map<String, Object> data = new HashMap<>();
+                                data.put(FirebaseID.UID,FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                data.put(FirebaseID.documentId, postId);
+                                data.put(FirebaseID.title, posttitle);
+                                data.put(FirebaseID.contents, Contents.getText().toString());
+                                data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                                data.put(FirebaseID.day, day);
+                                data.put(FirebaseID.time, time);
+                                data.put(FirebaseID.StudentName, postname);
+                                mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
+                                FilePath = null;
+                                show_progress.setVisibility(View.GONE);
+                                finish();
+                            }
+                        });
+                    }
+                    else{
+                        Map<String, Object> data = new HashMap<>();
+                        data.put(FirebaseID.UID,FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        data.put(FirebaseID.documentId, postId);
+                        data.put(FirebaseID.title, posttitle);
+                        data.put(FirebaseID.contents, Contents.getText().toString());
+                        data.put(FirebaseID.timestamp, FieldValue.serverTimestamp());
+                        data.put(FirebaseID.day, day);
+                        data.put(FirebaseID.time, time);
+                        data.put(FirebaseID.StudentName, postname);
+                        mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
+                        show_progress.setVisibility(View.GONE);
+                        finish();
+                    }
+
                 }
-                finish();
             }
         });
 
