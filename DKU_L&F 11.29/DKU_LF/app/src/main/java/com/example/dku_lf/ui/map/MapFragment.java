@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.dku_lf.LocationActivity;
 import com.example.dku_lf.R;
+import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.models.LocationModel;
 import com.example.dku_lf.ui.models.MarkerModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -154,7 +155,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
 
 
-        Locref.get()
+        Locref.whereEqualTo("posttype", "found").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {

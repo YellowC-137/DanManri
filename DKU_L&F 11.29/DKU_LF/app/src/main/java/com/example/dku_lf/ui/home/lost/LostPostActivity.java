@@ -35,6 +35,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.sql.Time;
 import java.util.Map;
 
 public class LostPostActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -44,7 +45,7 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
     private ImageView UploadImage;
     private MapFragment mapFragment;
     private FragmentManager fragmentManager;
-    private TextView TitleText, ContextText, NameText, NoMarker;
+    private TextView TitleText, ContextText, NameText, TimeText, NoMarker;
     private  Double latitude,longitude;
     private String id,Opponent,op_uid,op_title;
 
@@ -58,6 +59,7 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
         TitleText = findViewById(R.id.post_title_lost);
         ContextText = findViewById(R.id.post_contents_lost);
         NameText = findViewById(R.id.post_name_lost);
+        TimeText = findViewById(R.id.time);
         UploadImage = (ImageView) findViewById(R.id.uploaded_image_lost);
         NoMarker = (TextView)findViewById(R.id.no_marker);
 
@@ -82,6 +84,7 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
                                     String title = String.valueOf(snap.get(FirebaseID.title));
                                     String content = String.valueOf(snap.get(FirebaseID.contents));
                                     String name = String.valueOf(snap.get(FirebaseID.StudentName));
+                                    String time = String.valueOf(snap.get(FirebaseID.day))+" "+String.valueOf(snap.get(FirebaseID.time));
                                     String image_docID = String.valueOf(snap.get(FirebaseID.documentId));
                                     UserAppliaction.temp = name; //작성자의 이름,uid,게시글이름 받아오기
                                     UserAppliaction.uid = String.valueOf(snap.get(FirebaseID.UID));
@@ -89,6 +92,7 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
                                     TitleText.setText(title);
                                     ContextText.setText(content);
                                     NameText.setText(name);
+                                    TimeText.setText(time);
                                     image_upload(image_docID);
                                 }
                             }

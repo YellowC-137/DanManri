@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -52,7 +53,7 @@ public class FoundPostActivity extends AppCompatActivity implements OnMapReadyCa
     private ImageView UploadImage;
     private MapFragment mapFragment;
     private FragmentManager fragmentManager;
-    private TextView TitleText, ContextText, NameText, NoMarker;
+    private TextView TitleText, ContextText, NameText, TimeText, NoMarker;
     private  Double latitude,longitude;
     private String id,Opponent,op_uid,op_title;
 
@@ -66,6 +67,7 @@ public class FoundPostActivity extends AppCompatActivity implements OnMapReadyCa
         TitleText = findViewById(R.id.post_title_found);
         ContextText = findViewById(R.id.post_contents_found);
         NameText = findViewById(R.id.post_name_found);
+        TimeText = findViewById(R.id.time);
         UploadImage = (ImageView) findViewById(R.id.uploaded_image_found);
         NoMarker = (TextView)findViewById(R.id.no_marker);
 
@@ -90,14 +92,18 @@ public class FoundPostActivity extends AppCompatActivity implements OnMapReadyCa
                                     String title = String.valueOf(snap.get(FirebaseID.title));
                                     String content = String.valueOf(snap.get(FirebaseID.contents));
                                     String name = String.valueOf(snap.get(FirebaseID.StudentName));
+                                    String time = String.valueOf(snap.get(FirebaseID.day))+" "+String.valueOf(snap.get(FirebaseID.time));
+
                                     String image_docID = String.valueOf(snap.get(FirebaseID.documentId));
                                     UserAppliaction.temp = String.valueOf(snap.get(FirebaseID.StudentName)); //작성자의 이름,uid,게시글이름 받아오기
                                     UserAppliaction.uid = String.valueOf(snap.get(FirebaseID.UID));
                                     UserAppliaction.title = String.valueOf(snap.get(FirebaseID.title));
 
+
                                     TitleText.setText(title);
                                     ContextText.setText(content);
                                     NameText.setText(name);
+                                    TimeText.setText(time);
 
                                     image_upload(image_docID);
                                 }
