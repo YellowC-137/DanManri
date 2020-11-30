@@ -173,7 +173,6 @@ public class FoundPostActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
     private void image_upload(String image_docID) {
-
         StorageReference storageRef = storage.getReference();
         storageRef.child("images/found/" + image_docID + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

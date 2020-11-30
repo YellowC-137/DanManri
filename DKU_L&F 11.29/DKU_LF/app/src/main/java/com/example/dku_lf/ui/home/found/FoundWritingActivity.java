@@ -44,7 +44,6 @@ public class FoundWritingActivity extends AppCompatActivity {
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private ImageView UploadImage;
     private Uri FilePath;
-    ProgressBar progressBar;
     private EditText Title, Contents;
     private String postId,posttitle,postname;
     private  int REQUSET = 2400;
@@ -65,7 +64,6 @@ public class FoundWritingActivity extends AppCompatActivity {
         final String time = timeFormat.format(now);
         final String day = dayFormat.format(now);
         UploadImage = (ImageView) findViewById(R.id.user_upload_image_found);
-        progressBar = (ProgressBar)findViewById(R.id.found_writing_Prog);
 
 
         Title = findViewById(R.id.title_edit_found);
@@ -187,7 +185,6 @@ public class FoundWritingActivity extends AppCompatActivity {
 
     private void uploadFile(String postId) {
         if (FilePath != null) {
-            progressBar.setVisibility(View.VISIBLE);
             //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
             //Unique한 파일명을 만들자.
