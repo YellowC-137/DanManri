@@ -44,7 +44,7 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
     private ImageView UploadImage;
     private MapFragment mapFragment;
     private FragmentManager fragmentManager;
-    private TextView TitleText, ContextText, NameText;
+    private TextView TitleText, ContextText, NameText, NoMarker;
     private  Double latitude,longitude;
     private String id,Opponent,op_uid,op_title;
 
@@ -59,7 +59,7 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
         ContextText = findViewById(R.id.post_contents_lost);
         NameText = findViewById(R.id.post_name_lost);
         UploadImage = (ImageView) findViewById(R.id.uploaded_image_lost);
-
+        NoMarker = (TextView)findViewById(R.id.no_marker);
 
         fragmentManager = getFragmentManager();
         mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.lost_mapview);
@@ -130,19 +130,26 @@ public class LostPostActivity extends AppCompatActivity implements OnMapReadyCal
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         DocumentSnapshot ds = task.getResult();
-                        latitude = ds.getDouble("latitude");
-                        longitude= ds.getDouble("longitude");
+                        if(task.getResult().exists()){
+                            latitude = ds.getDouble("latitude");
+                            longitude= ds.getDouble("longitude");
 
-                        LatLng DKU = new LatLng(latitude,longitude);
-                        mOptions.position(new LatLng(latitude,longitude));
-                        googleMap.addMarker(mOptions);
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DKU, 17.0f));
-                        return;
+                            LatLng DKU = new LatLng(latitude,longitude);
+                            mOptions.position(new LatLng(latitude,longitude));
+                            googleMap.addMarker(mOptions);
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DKU, 17.0f));
+                            return;
+                        }
+                        else {
+                            NoMarker.setVisibility(View.VISIBLE);
+                        }
+
                     }
                 });
 
 
     }
+
     private void image_upload(String image_docID) {
         StorageReference storageRef = storage.getReference();
         storageRef.child("images/lost/" + image_docID + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
