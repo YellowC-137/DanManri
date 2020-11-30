@@ -16,6 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        tools:listitem="@layout/item_message"
         />
     <EditText
         android:id="@+id/message_edittext"

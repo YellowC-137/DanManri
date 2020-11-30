@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -46,7 +47,7 @@ public class KeywordActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Keyword Notification");
+        setTitle("키워드 설정");
 
         binding = ActivityKeywordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,7 +55,7 @@ public class KeywordActivity extends AppCompatActivity {
 
 
         key_set = findViewById(R.id.key_set);
-        Button key_add = (Button)findViewById(R.id.key_add);
+        ImageButton key_add = (ImageButton)findViewById(R.id.key_add);
         Button start = (Button)findViewById(R.id.keyword_start);
 
         final RecyclerView recyclerView = findViewById(R.id.Keyword_view);
@@ -101,7 +102,6 @@ public class KeywordActivity extends AppCompatActivity {
                     //Firebase에서 ID, 타이틀, 내용 String으로 가져옴
 
                     Map<String, Object> data = new HashMap<>();
-                    data.put(FirebaseID.email, email);
                     lStore.collection(FirebaseID.keyword).document(email).set(data, SetOptions.merge()); // collection 및 document 생성
                     keyref.update(FirebaseID.words, FieldValue.arrayUnion(key_set.getText().toString())); // 새로운 값이면 배열에 추가
                     Toast.makeText(getApplicationContext(), "[" + key_set.getText().toString() +"] 키워드가 등록되었습니다.", Toast.LENGTH_SHORT);
@@ -113,6 +113,7 @@ public class KeywordActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(KeywordActivity.this, "키워드 알림이 시작되었습니다!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), KeywordBack.class);
                 startService(intent);
             }

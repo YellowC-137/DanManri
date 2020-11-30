@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorRegister"
+    android:background="#BEDAFF"
     tools:context=".ui.notifications.KeywordActivity">
 
 
     <Button
-        android:id="@+id/stop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stop Keyword" />
-
-    <Button
         android:id="@+id/keyword_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
         android:layout_gravity="end"
-        android:text="시작" />
-
-    <EditText
-        android:id="@+id/key_set"
-        android:layout_width="297dp"
-        android:layout_height="39dp"
-        android:layout_gravity="center"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:maxLength="10"
-        android:background="@drawable/rounded_edittext"
+        android:text="START"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_shape2_blue"
         />
 
-    <Button
-        android:id="@+id/key_add"
-
-        android:layout_width="118dp"
-        android:layout_height="32dp"
-        android:background="@drawable/button_shape1"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
-        android:text="ADD"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"/>
+        <EditText
+            android:id="@+id/key_set"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="textNoSuggestions"
+            android:maxLength="12"
+            android:paddingLeft="10dp"
+            tools:text="키워드 입력"/>
+
+        <ImageButton
+            android:id="@+id/key_add"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/rounded_edittext"
+            app:srcCompat="@drawable/ic_baseline_add_24"
+            android:layout_alignEnd="@id/key_set"
+            />
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Keyword_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"/>
+        tools:listitem="@layout/item_keyword"/>
 
 </LinearLayout>

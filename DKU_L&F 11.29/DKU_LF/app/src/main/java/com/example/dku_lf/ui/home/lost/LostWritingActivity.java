@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,6 +49,7 @@ public class LostWritingActivity extends AppCompatActivity {
     private EditText Title, Contents;
     private ImageView UploadImage;
     private String postId,posttitle,postname;
+    private TextView noImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class LostWritingActivity extends AppCompatActivity {
         Button PhBtn = (Button)findViewById(R.id.addPhotoBtn_lost);
         Button MapBtn = (Button)findViewById(R.id.addMapBtn_lost);
         Button Submit = (Button)findViewById(R.id.submitBtn_lost);
+        noImage = findViewById(R.id.noimage);
         final LinearLayout show_progress = (LinearLayout)findViewById(R.id.RegLay);
 
         Date now = new Date();
@@ -170,6 +173,7 @@ public class LostWritingActivity extends AppCompatActivity {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePath);
                 UploadImage.setImageBitmap(bitmap);
+                noImage.setVisibility(View.GONE);
             } catch (IOException e) {
                 e.printStackTrace();
             }

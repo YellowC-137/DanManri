@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +47,7 @@ public class FoundWritingActivity extends AppCompatActivity {
     private Uri FilePath;
     private EditText Title, Contents;
     private String postId,posttitle,postname;
+    private TextView noImage;
     private  int REQUSET = 2400;
 
     @Override
@@ -56,6 +58,7 @@ public class FoundWritingActivity extends AppCompatActivity {
         Button PhBtn = (Button)findViewById(R.id.addPhotoBtn_found);
         Button MapBtn = (Button)findViewById(R.id.addMapBtn_found);
         Button Submit = (Button)findViewById(R.id.submitBtn_found);
+        noImage = findViewById(R.id.noimage);
         final LinearLayout show_progress = (LinearLayout)findViewById(R.id.RegLay);
         Date now = new Date();
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -176,6 +179,7 @@ public class FoundWritingActivity extends AppCompatActivity {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePath);
                 UploadImage.setImageBitmap(bitmap);
+                noImage.setVisibility(View.GONE);
             } catch (IOException e) {
                 e.printStackTrace();
             }

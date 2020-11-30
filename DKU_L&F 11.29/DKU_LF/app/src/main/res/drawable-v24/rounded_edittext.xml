@@ -10,6 +10,5 @@
         android:topRightRadius="8dp"
         />
     <padding
-        android:left="15dp"
         />
 </shape>

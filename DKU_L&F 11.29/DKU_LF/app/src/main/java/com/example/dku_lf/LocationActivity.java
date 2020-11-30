@@ -122,7 +122,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     public void onMapReady(final GoogleMap googlemap) {
         LatLng DKU = new LatLng(37.32187140504299, 127.12675029768137);
-        googlemap.animateCamera(CameraUpdateFactory.newLatLngZoom(DKU, 17.0f));
+        googlemap.moveCamera(CameraUpdateFactory.newLatLngZoom(DKU, 17.0f));
 
         if (ContextCompat.checkSelfPermission(LocationActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
             googlemap.setMyLocationEnabled(true);
@@ -142,7 +142,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
                 // 마커 타이틀
 
-                mOptions.snippet(postname);
+                mOptions.snippet(postname); 
 
                 Double latitude = point.latitude; // 위도
                 Double longitude = point.longitude; // 경도

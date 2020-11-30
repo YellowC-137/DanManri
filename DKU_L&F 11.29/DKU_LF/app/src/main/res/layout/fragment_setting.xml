@@ -1,36 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.setting.SettingFragment">
+    android:orientation="vertical"
+    tools:context=".ui.setting.SettingFragment"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="연결된 계정"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDivider" />
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:id="@+id/student_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="32000000"
+            android:textSize="20dp"
+            android:textColor="#474747"/>
+
+        <TextView
+            android:id="@+id/student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="홍길동"
+            android:textSize="20dp"
+            android:textColor="#474747"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divide"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDivider" />
 
     <Button
         android:id="@+id/logout_button"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/setting_shape"
-        android:text="로그아웃"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:gravity="center_vertical|left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:text="로그아웃"
+        android:textSize="15dp"
+        android:paddingStart="10dp"/>
+
+    <View
+        android:id="@+id/divide2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#00ECECEC"
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/leave_button"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/setting_shape"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:gravity="center_vertical|left"
         android:text="회원탈퇴"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout_button"
-        app:layout_constraintVertical_bias="0.0" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="15dp"
+        android:paddingStart="10dp"/>
+
+</LinearLayout>

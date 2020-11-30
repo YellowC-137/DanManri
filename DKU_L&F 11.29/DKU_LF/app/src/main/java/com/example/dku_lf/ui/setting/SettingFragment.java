@@ -9,27 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
 import com.example.dku_lf.R;
 import com.example.dku_lf.LoginActivity;
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.home.HomeFragment;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GetTokenResult;
-import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import static android.content.ContentValues.TAG;
@@ -38,7 +35,8 @@ import static android.content.ContentValues.TAG;
 public class SettingFragment extends HomeFragment {
 
     private GoogleApiClient mGoogleApiClient;
-
+    private TextView studentnum, studentname;
+    private ImageView profile;
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +52,9 @@ public class SettingFragment extends HomeFragment {
 
         Button logout = (Button) root.findViewById(R.id.logout_button);
         Button leave  = (Button) root.findViewById(R.id.leave_button);
+        studentnum = root.findViewById(R.id.student_num);
+        studentname = root.findViewById(R.id.student_name);
+        profile = root.findViewById(R.id.profile);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +157,22 @@ public class SettingFragment extends HomeFragment {
             }
         });
 
+        lStore.collection(FirebaseID.user)
+                .document(email)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task != null){
+                            studentname.setText(String.valueOf(task.getResult().get("StudentName")));
+                            studentnum.setText(String.valueOf(task.getResult().get("StudentNum")));
+                            Glide.with(getActivity())
+                                    .load(mAuth.getCurrentUser().getPhotoUrl())
+                                    .circleCrop()
+                                    .into(profile);
+                        }
+                    }
+                });
 
 
 

@@ -20,7 +20,8 @@
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:padding="10dp"
-                android:src="@color/colorDivider" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_default" />
 
             <LinearLayout
                 android:layout_width="match_parent"
