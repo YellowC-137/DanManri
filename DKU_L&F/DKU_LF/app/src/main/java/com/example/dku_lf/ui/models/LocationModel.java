@@ -11,6 +11,6 @@ public class LocationModel {
         public Double latitude;
         public Double longitude;
         public  String posttype ;
-        public String postname;
+        public String posttitle;
     }
 }
