@@ -45,6 +45,7 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.ViewHolder>{
         final NotiItem item = mDataList.get(position);
         holder.title.setText(item.getTitle());
         holder.content.setText(item.getContent());
+        holder.image.setImageResource(R.drawable.img_default);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
