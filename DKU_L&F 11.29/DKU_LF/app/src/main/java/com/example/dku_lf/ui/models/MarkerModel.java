@@ -5,6 +5,7 @@ public class MarkerModel {
     double lng;//y
     String title;
     String type;
+    String postid;
 
     public double getLat() {
         return lat;
@@ -37,8 +38,6 @@ public class MarkerModel {
     public void setType(String type) {
         this.type = type;
     }
-
-
 
     public MarkerModel(double lat,double lng, String title,String type){
         this.lat=lat;

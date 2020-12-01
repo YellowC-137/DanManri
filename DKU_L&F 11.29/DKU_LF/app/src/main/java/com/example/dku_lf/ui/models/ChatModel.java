@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChatModel {
-    String email;
     String text;
 
 
@@ -15,14 +14,6 @@ public class ChatModel {
         public Object timestamp;
         public String uid;
         public String message;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getText() {

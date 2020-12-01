@@ -24,8 +24,12 @@ import android.widget.Toast;
 import com.example.dku_lf.LocationActivity;
 import com.example.dku_lf.R;
 import com.example.dku_lf.database.FirebaseID;
+import com.example.dku_lf.database.UserAppliaction;
+import com.example.dku_lf.ui.home.found.FoundPostActivity;
+import com.example.dku_lf.ui.home.lost.LostPostActivity;
 import com.example.dku_lf.ui.models.LocationModel;
 import com.example.dku_lf.ui.models.MarkerModel;
+import com.example.dku_lf.ui.models.Post;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,6 +44,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -53,9 +58,10 @@ import com.google.firebase.firestore.model.Document;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
+public class MapFragment extends Fragment implements OnMapReadyCallback{
     private static final String TAG = "MapFragment";
     private MapView mapView;
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
@@ -63,6 +69,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private String postid, postname, posttype;
     private LocationModel locationModel;
     private MarkerModel markerModel;
+    private List<Post> mDatas;
+    private CollectionReference foundref = mStore.collection("post_found");
+    private CollectionReference lostref = mStore.collection("post");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -135,8 +144,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    public void setMapToolbarEnabled (boolean enabled){
+
+    }
     @Override
     public void onMapReady(final GoogleMap googleMap) {
+        final MarkerModel markerModel = new MarkerModel();
         final Map<String,LocationModel.locatonInfo> locMap = new HashMap<>();
         LatLng DKU = new LatLng(37.32187140504299, 127.12675029768137);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DKU, 17.0f));
@@ -153,8 +166,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             transaction.detach(this).attach(this).commit();
         }
 
-
-
         Locref.whereEqualTo("posttype", "found").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -162,18 +173,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> shot = document.getData();
-                                String Docuid = document.getId();
-                                Double latitude = document.getDouble("latitude");
-                                Double longitude = document.getDouble("longitude");
-                                String posttype = (String) document.get("posttype");
-                                String posttitle = (String) document.get("posttitle");
+                                markerModel.setLat(document.getDouble("latitude"));
+                                markerModel.setLng(document.getDouble("longitude"));
+                                markerModel.setType((String) document.get("posttype"));
+                                markerModel.setPostid(document.getId());
 
-                                mOptions.title(posttitle);
-                                mOptions.position(new LatLng(latitude, longitude));
-                                Log.d(TAG, "가져오기 :"+Docuid +" : "+ new LatLng(latitude, longitude) +" : "+posttype +" : "+postname);
+                                lostref.whereEqualTo("documentID",markerModel.getPostid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            markerModel.setTitle((String) document.get("title"));
+                                        } }
+                                });
+
+
+                                mOptions.position(new LatLng(markerModel.getLat(), markerModel.getLng())).title(markerModel.getTitle()).snippet("클릭시 게시글로 이동")
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                                Log.d(TAG, "가져오기 :"+markerModel.getPostid() +" : "+ new LatLng(markerModel.getLat(), markerModel.getLng()) +" : "+posttype +" : "+postname);
                                 // 마커(핀) 추가
                                 googleMap.addMarker(mOptions);
-
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -181,13 +199,56 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     }
                 });
 
+        Locref.whereEqualTo("posttype", "lost").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> shot = document.getData();
+                                markerModel.setLat(document.getDouble("latitude"));
+                                markerModel.setLng(document.getDouble("longitude"));
+                                markerModel.setType((String) document.get("posttype"));
+                                markerModel.setPostid(document.getId());
+
+                                lostref.whereEqualTo("documentID",markerModel.getPostid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            markerModel.setTitle((String) document.get("title"));
+                                            } }
+                                });
 
 
+                                mOptions.position(new LatLng(markerModel.getLat(), markerModel.getLng())).title(markerModel.getTitle()).snippet("클릭시 게시글로 이동")
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+                                Log.d(TAG, "가져오기 :"+markerModel.getPostid() +" : "+ new LatLng(markerModel.getLat(), markerModel.getLng()) +" : "+posttype +" : "+postname);
+                                // 마커(핀) 추가
+                                googleMap.addMarker(mOptions);
 
 
+                                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                    @Override
+                                    public boolean onMarkerClick(Marker marker) { return false; }});
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
 
+        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
 
+               Intent in = new Intent(getActivity(),LostPostActivity.class);
+               Log.d(TAG,"uid 값 : " +markerModel.getPostid());
+                in.putExtra(FirebaseID.documentId,markerModel.getPostid());
 
+                startActivity(in);
+
+            }
+        });
 
 
     }
