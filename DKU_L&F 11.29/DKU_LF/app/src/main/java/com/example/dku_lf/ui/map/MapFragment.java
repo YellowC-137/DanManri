@@ -3,6 +3,7 @@ package com.example.dku_lf.ui.map;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,19 +13,16 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.FragmentManager;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.dku_lf.LocationActivity;
+import com.bumptech.glide.Glide;
 import com.example.dku_lf.R;
 import com.example.dku_lf.database.FirebaseID;
-import com.example.dku_lf.database.UserAppliaction;
 import com.example.dku_lf.ui.home.found.FoundPostActivity;
 import com.example.dku_lf.ui.home.lost.LostPostActivity;
 import com.example.dku_lf.ui.models.LocationModel;
@@ -44,19 +42,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentId;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SetOptions;
-import com.google.firebase.firestore.Source;
-import com.google.firebase.firestore.model.Document;
+import com.google.firebase.storage.FirebaseStorage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +63,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private List<Post> mDatas;
     private CollectionReference foundref = mStore.collection("post_found");
     private CollectionReference lostref = mStore.collection("post");
+    private static String type;
+    private static String document_id;
+    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://lostnfound-3024f.appspot.com/");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -179,17 +172,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                                 // 마커(핀) 추가
                                 googleMap.addMarker(mOptions);
-                                googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-                                    @Override
-                                    public View getInfoWindow(Marker marker) {
-                                        return null;
-                                    }
-
-                                    @Override
-                                    public View getInfoContents(Marker marker) {
-                                        return null;
-                                    }
-                                });
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -219,13 +201,29 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 });
 
 
+        googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+
+                final View view = getActivity().getLayoutInflater().inflate(R.layout.item_windowinfo, null);
+                TextView text = view.findViewById(R.id.texttype);
+                TextView info = view.findViewById(R.id.infoText);
+                text.setText(type.toUpperCase());
+                info.setText(marker.getSnippet());
+
+                return view;
+            }
+        });
 
         googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                StringTokenizer DocumentInfo = new StringTokenizer(marker.getTitle(), "@");
-                String type = DocumentInfo.nextToken();
-                String document_id = DocumentInfo.nextToken();
 
                 if(type.equals("lost")){
                     Intent in = new Intent(getActivity(),LostPostActivity.class);
@@ -241,11 +239,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         });
 
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                StringTokenizer DocumentInfo = new StringTokenizer(marker.getTitle(), "@");
+                type = DocumentInfo.nextToken();
+                document_id = DocumentInfo.nextToken();
+
+                return false;
+            }
+        });
+
 
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        return true;
+        return false;
     }
 }
