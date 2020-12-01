@@ -1,6 +1,7 @@
 package com.example.dku_lf.adapters;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class FoundPostAdapter extends RecyclerView.Adapter<FoundPostAdapter.Post
         holder.contents.setText(data.getContents());
         holder.user.setText(data.getUser());
         holder.time.setText(data.getTime());
+        holder.photo.setImageResource(R.drawable.img_default);
+
 
         storage.getReference().child("images/found/" + data.getDocumentId() + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

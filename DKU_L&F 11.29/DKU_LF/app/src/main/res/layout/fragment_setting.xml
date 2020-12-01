@@ -23,7 +23,8 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorDivider" />
+        android:background="#F5F5F5"
+        android:layout_marginBottom="15dp" />
 
     <ImageView
         android:id="@+id/profile"
@@ -47,18 +48,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="32000000"
-            android:textSize="20dp"
-            android:textColor="#474747"/>
+            android:textColor="#474747"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/student_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="홍길동"
-            android:textSize="20dp"
-            android:textColor="#474747"/>
+            android:textColor="#474747"
+            android:textSize="20dp" />
 
     </LinearLayout>
 

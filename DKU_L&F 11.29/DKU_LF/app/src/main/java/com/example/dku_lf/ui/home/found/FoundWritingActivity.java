@@ -74,7 +74,7 @@ public class FoundWritingActivity extends AppCompatActivity {
         postId = mStore.collection(FirebaseID.post_found).document().getId();
         posttitle = Title.getText().toString();
         if (postname==null)
-        { postname = UserAppliaction.user_name;
+        { postname = UserAppliaction.nickname;
         Log.d(TAG,"으앙 "+postname);}
 
         //사진첨부

@@ -73,7 +73,7 @@ public class LostWritingActivity extends AppCompatActivity {
         Contents = findViewById(R.id.contentText_edit_lost);
         UploadImage = (ImageView) findViewById(R.id.user_upload_image_lost);
         postId = mStore.collection(FirebaseID.post).document().getId();
-        postname = UserAppliaction.user_name;
+        postname = UserAppliaction.nickname;
         Log.d(TAG,"으앙 "+postname);
 
 

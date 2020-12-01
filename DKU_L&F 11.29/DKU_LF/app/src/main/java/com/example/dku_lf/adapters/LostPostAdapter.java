@@ -1,11 +1,14 @@
 package com.example.dku_lf.adapters;
 
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,16 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.dku_lf.R;
 import com.example.dku_lf.ui.models.Post;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageException;
 
 import java.util.List;
+
+import io.grpc.Context;
 
 public class LostPostAdapter extends RecyclerView.Adapter<LostPostAdapter.PostViewHolder> {
 
     private List<Post> datas;
     private FirebaseStorage storage = FirebaseStorage.getInstance("gs://lostnfound-3024f.appspot.com/");
     private ImageView temp;
+    private Uri document_uri;
 
     public LostPostAdapter(List<Post> datas) {
         this.datas = datas;
@@ -38,17 +46,19 @@ public class LostPostAdapter extends RecyclerView.Adapter<LostPostAdapter.PostVi
 
     @Override
     public void onBindViewHolder(@NonNull final PostViewHolder holder, int position) {
-        Post data = datas.get(position);  //Post 객체를 하나 만듦. 위에서부터 아래로 0~포지션에 하나 넣어줌
+        final Post data = datas.get(position);  //Post 객체를 하나 만듦. 위에서부터 아래로 0~포지션에 하나 넣어줌
         holder.title.setText(data.getTitle());  //각 하나가 holder임 포지션1에 홀더, 2에홀더... 거기에 datas.gettitle를 넣어줌. post에 있는 getTitle활용.
         holder.contents.setText(data.getContents());
         holder.user.setText(data.getUser());
         holder.time.setText(data.getTime());
+        holder.photo.setImageResource(R.drawable.img_default);
+
 
         storage.getReference().child("images/lost/" + data.getDocumentId() + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
-            public void onSuccess(Uri uri) { // 성공 시
-
-                Glide.with(holder.photo.getContext())
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+                Glide.with(holder.itemView.getContext())
                         .load(uri)
                         .into(holder.photo);
             }

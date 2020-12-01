@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#FBF08E"
-        >
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chatlist_lastmessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/chatitem_textview_timestamp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/item_chatlist_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="방이름"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center_vertical"
+            android:padding="10dp"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            tools:text="게시글 'ㅇㅇ'에서 생성된 쪽지함" />
 
         <TextView
-            android:layout_below="@+id/item_chatlist_title"
-            android:layout_marginTop="10dp"
+            android:id="@+id/item_chatlist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/chatlist_lastmessage"
-            />
-        <TextView
-            android:id="@+id/chatitem_textview_timestamp"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:textSize="10dp"
+            android:padding="10dp"
+            android:textSize="15dp"
+            tools:text="와의 대화" />
+
+        <View
+            android:id="@+id/view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorDivider"
+            android:visibility="visible" />
 
     </RelativeLayout>
+
 </LinearLayout>

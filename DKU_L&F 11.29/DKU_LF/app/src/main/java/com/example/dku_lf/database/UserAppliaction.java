@@ -10,6 +10,7 @@ public class UserAppliaction extends Application {
     public  static String temp;
     public  static String uid;  //uid
     public  static String title;
+    public static String nickname;
 
     @Override
     public void onCreate() {

@@ -19,14 +19,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dku_lf.R;
+import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.ui.home.HomeFragment;
 import com.example.dku_lf.ui.models.ChatModel;
 import com.example.dku_lf.ui.models.UserModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -106,7 +113,21 @@ public class ChatlistFragment extends HomeFragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             UserModel userModel = snapshot.getValue(UserModel.class);
-                            customViewHolder.textView_title.setText("게시글 [ "+chatModels.get(position).titles+" ]");
+                            customViewHolder.textView_title.setText("게시글 [ "+chatModels.get(position).titles+" ] 에서 생성됨");
+
+                            FirebaseFirestore.getInstance().collection("user")
+                                    .document(otheruser.get(customViewHolder.getAdapterPosition()))
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if(task.getResult() != null){
+                                                Map<String, Object> snap = task.getResult().getData();
+                                                String usernick = String.valueOf(snap.get("StudentNick"));
+                                                customViewHolder.textView_name.setText("FROM : " + usernick);
+                                            }
+                                        }
+                                    });
 
                         }
 
@@ -153,12 +174,14 @@ public class ChatlistFragment extends HomeFragment {
             public TextView textView_title;
             public TextView textView_lastmessage;
             public TextView textView_timestamp;
+            public TextView textView_name;
             public CustomViewHolder(View view) {
                 super(view);
 
                 textView_lastmessage=(TextView)view.findViewById(R.id.chatlist_lastmessage);
                 textView_title=(TextView)view.findViewById(R.id.item_chatlist_title);
                 textView_timestamp = (TextView)view.findViewById(R.id.chatitem_textview_timestamp);
+                textView_name=(TextView)view.findViewById(R.id.item_chatlist_name);
 
             }
         }

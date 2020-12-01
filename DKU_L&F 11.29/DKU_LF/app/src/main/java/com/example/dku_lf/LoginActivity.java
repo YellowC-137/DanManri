@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,40 +18,26 @@ import android.widget.Toast;
 
 import com.example.dku_lf.database.FirebaseID;
 import com.example.dku_lf.database.UserAppliaction;
-import com.example.dku_lf.ui.home.found.FoundPostActivity;
 import com.example.dku_lf.ui.models.UserModel;
 import com.example.dku_lf.ui.register.AuthenticationActivity;
-import com.example.dku_lf.ui.register.ResetGmailActivity;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.internal.GoogleApiManager;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
-import com.google.firebase.firestore.Source;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.squareup.okhttp.internal.DiskLruCache;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -157,6 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             UserAppliaction.user_id = null;
                             UserAppliaction.user_name = null;
+                            UserAppliaction.nickname = null;
 
                             FirebaseUser user = mAuth.getCurrentUser();
 
@@ -177,14 +163,18 @@ public class LoginActivity extends AppCompatActivity {
                                 userMap.put(FirebaseID.email, useraccount);
                                 userMap.put(FirebaseID.StudentName, user.getDisplayName());
                                 userMap.put(FirebaseID.StudentNum, StudentNum);
-                                FirebaseFirestore.getInstance().collection(FirebaseID.user).document(useraccount).set(userMap, SetOptions.merge());
+                                userMap.put("StudentNick", makeNickname(user.getDisplayName(), StudentNum));
+                                FirebaseFirestore.getInstance().collection(FirebaseID.user).document(mAuth.getUid()).set(userMap, SetOptions.merge());
 
                                 UserAppliaction.user_name = user.getDisplayName();
                                 UserAppliaction.user_id = useraccount;
+                                UserAppliaction.nickname = makeNickname(user.getDisplayName(), StudentNum);
+                                Log.w("유저 닉네임 : ", makeNickname(user.getDisplayName(), StudentNum));
 
                                 UserModel userModel = new UserModel();
-                                userModel.userName = user.getDisplayName();
+                                userModel.userName = makeNickname(user.getDisplayName(), StudentNum);
                                 userModel.uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
 
                                 Map<String, Object> keyMap = new HashMap<>();
                                 keyMap.put(FirebaseID.words, Arrays.asList("Temp-word"));
@@ -225,15 +215,17 @@ public class LoginActivity extends AppCompatActivity {
 
         try {
             lStore.collection("user")
-                    .document(mAuth.getCurrentUser().getEmail())
+                    .document(mAuth.getUid())
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot ds = task.getResult();
                             String username = ds.getData().get("StudentName").toString();
+                            String usernick = ds.getData().get("StudentNick").toString();
                             UserAppliaction.user_name = username;
                             UserAppliaction.user_id = ds.getData().get("email").toString();
+                            UserAppliaction.nickname = usernick;
                         }
                     });
 
@@ -288,5 +280,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         ad.show();
+    }
+
+    public String makeNickname(String username, String usernum){
+        StringBuilder nick = new StringBuilder(usernum);
+        nick.append(" "+username);
+        nick.setCharAt(0, '#');
+        nick.setCharAt(1, '#');
+        nick.setCharAt(6, '#');
+        nick.setCharAt(7, '#');
+
+        for(int i=10; i<nick.length(); i++){
+            nick.setCharAt(i, '#');
+        }
+
+        return nick.toString();
     }
 }

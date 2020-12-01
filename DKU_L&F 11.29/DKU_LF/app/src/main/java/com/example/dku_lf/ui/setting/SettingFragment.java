@@ -115,7 +115,7 @@ public class SettingFragment extends HomeFragment {
                                 });
 
                         // 자신의 유저 정보 삭제
-                        lStore.collection(FirebaseID.user).document(email)
+                        lStore.collection(FirebaseID.user).document(mAuth.getUid())
                                 .delete()
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
@@ -158,7 +158,7 @@ public class SettingFragment extends HomeFragment {
         });
 
         lStore.collection(FirebaseID.user)
-                .document(email)
+                .document(mAuth.getUid())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
