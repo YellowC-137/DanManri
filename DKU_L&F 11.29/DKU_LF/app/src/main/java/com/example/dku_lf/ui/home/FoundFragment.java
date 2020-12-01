@@ -124,6 +124,7 @@ public class FoundFragment extends HomeFragment implements View.OnClickListener,
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mStore.collection(FirebaseID.post_found).document(mDatas.get(position).getDocumentId()).delete();
+                mStore.collection("Post_locations").document(mDatas.get(position).getDocumentId()).delete();
                 Toast.makeText(getActivity(), "삭제 되었습니다.", Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
