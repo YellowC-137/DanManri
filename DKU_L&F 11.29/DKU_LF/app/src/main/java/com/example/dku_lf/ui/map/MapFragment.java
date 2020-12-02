@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -66,6 +67,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private static String type;
     private static String document_id;
     private FirebaseStorage storage = FirebaseStorage.getInstance("gs://lostnfound-3024f.appspot.com/");
+    private LinearLayout photo_lay;
+    private ImageView photo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         mapView = (MapView)layout.findViewById(R.id.Map_view);
         mapView.getMapAsync(this);
+
+        photo_lay = layout.findViewById(R.id.map_photo_layout);
+        photo = layout.findViewById(R.id.map_photo);
+
 
         return layout;
     }
@@ -217,6 +224,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 text.setText(type.toUpperCase());
                 info.setText(marker.getSnippet());
 
+                storage.getReference().child("images/"+type.toLowerCase()+"/" + document_id + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // Got the download URL for 'users/me/profile.png'
+                        Glide.with(view)
+                                .load(uri)
+                                .into(photo);
+                    }
+                });
+
+                photo_lay.setVisibility(View.VISIBLE);
+                photo_lay.bringToFront();
+
                 return view;
             }
         });
@@ -247,6 +267,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 document_id = DocumentInfo.nextToken();
 
                 return false;
+            }
+        });
+
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                photo_lay.setVisibility(View.GONE);
             }
         });
 
