@@ -13,3 +13,16 @@
 
 [DataBase]
 ![image](https://user-images.githubusercontent.com/55780312/222876224-63fd40e6-f335-4768-8274-ac306a695b11.png)
+
+
+- 로그인 화면 / 게시글 메인 화면
+
+![image](https://user-images.githubusercontent.com/55780312/222876338-334ab55c-54a1-40e9-8853-81ba4ae5b424.png)
+
+- 게시글 본문 화면 / 지도 화면
+
+![image](https://user-images.githubusercontent.com/55780312/222876365-3a95301e-b5ab-49ae-9f87-51ce2126719e.png)
+
+- 채팅화면 / 키워드 알림 설정 화면
+
+![image](https://user-images.githubusercontent.com/55780312/222876378-7d4f85a1-3bde-4a19-ae95-d7e3ea2619e0.png)
